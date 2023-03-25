@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
+    <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
   </ItemGroup>
 
 </Project>
