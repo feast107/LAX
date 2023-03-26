@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AiController.Conversion
 {
-    internal interface ICommandContext
+    public interface ICommandContext
     {
         string Context { get; }
     }
