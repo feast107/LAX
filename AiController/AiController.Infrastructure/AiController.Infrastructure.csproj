@@ -3,10 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+	  <LangVersion>preview</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AiController.Infrastructure\AiController.Infrastructure.csproj" />
-  </ItemGroup>
 
 </Project>

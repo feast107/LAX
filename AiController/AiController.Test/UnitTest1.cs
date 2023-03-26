@@ -1,4 +1,4 @@
-using AiController.Communication.GPT3;
+using AiController.Communication.GPT35;
 
 namespace AiController.Test
 {
@@ -8,12 +8,13 @@ namespace AiController.Test
         [SetUp]
         public void Setup()
         {
-            Communicator = new Gpt3Communicator(
-                "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",
-                "openaiapi.elecho.top",
-                "gpt-3.5-turbo",
-                0
-            );
+            Communicator = new Gpt35Communicator
+            {
+                ApiKey = "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",
+                ApiHost = "openaiapi.elecho.top",
+                ModelName = "gpt-3.5-turbo",
+                Temperature = 0
+            };
         }
 
         [Test]

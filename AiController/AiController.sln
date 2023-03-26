@@ -5,15 +5,17 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Conversion", "AiController.Conversion\AiController.Conversion.csproj", "{2F27BA71-AD38-487D-A74D-7F244F04E608}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Communication", "AiController.Communication\AiController.Communication.csproj", "{48627187-15BB-4318-A912-E5B227C88B40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Communication", "AiController.Communication\AiController.Communication.csproj", "{48627187-15BB-4318-A912-E5B227C88B40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Desktop.Wpf", "AiController.Desktop.Wpf\AiController.Desktop.Wpf.csproj", "{19A28A9D-3B20-4174-A2E7-E5FE3D4CD1F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Desktop.Wpf", "AiController.Desktop.Wpf\AiController.Desktop.Wpf.csproj", "{19A28A9D-3B20-4174-A2E7-E5FE3D4CD1F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Server", "AiController.Server\AiController.Server.csproj", "{B643B073-D26C-4A01-8F13-BE1FE091BF53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Server", "AiController.Server\AiController.Server.csproj", "{B643B073-D26C-4A01-8F13-BE1FE091BF53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Transmission", "AiController.Transmission\AiController.Transmission.csproj", "{41E63748-13FE-4A8F-BE19-50FDDC27A719}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Transmission", "AiController.Transmission\AiController.Transmission.csproj", "{41E63748-13FE-4A8F-BE19-50FDDC27A719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Test", "AiController.Test\AiController.Test.csproj", "{1B79E519-BD7B-49CD-BAC9-8282D0552F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Test", "AiController.Test\AiController.Test.csproj", "{1B79E519-BD7B-49CD-BAC9-8282D0552F2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Infrastructure", "AiController.Infrastructure\AiController.Infrastructure.csproj", "{C1A8A062-FE53-4400-AEBA-3C6550B53BF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1B79E519-BD7B-49CD-BAC9-8282D0552F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B79E519-BD7B-49CD-BAC9-8282D0552F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B79E519-BD7B-49CD-BAC9-8282D0552F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A8A062-FE53-4400-AEBA-3C6550B53BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A8A062-FE53-4400-AEBA-3C6550B53BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A8A062-FE53-4400-AEBA-3C6550B53BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A8A062-FE53-4400-AEBA-3C6550B53BF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
