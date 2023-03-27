@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace AiController.Conversion.Converters
 {
-    public class MouseCommandConverter : ICommandConverter<Action<PointF>>
+    public class MouseOperationCommandConverter : IOperationConverter<Action<PointF>> , ICommandContext
     {
         public string ToMessage(string ask)
         {
@@ -15,5 +15,7 @@ namespace AiController.Conversion.Converters
         {
             throw new NotImplementedException();
         }
+
+        public string Context { get; }
     }
 }

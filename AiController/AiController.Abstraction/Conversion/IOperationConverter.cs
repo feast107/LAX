@@ -1,8 +1,8 @@
 ﻿namespace AiController.Abstraction.Conversion
 {
-    public interface ICommandConverter : ICommandConverter<object> { }
+    public interface IOperationConverter : IOperationConverter<object> { }
 
-    public interface ICommandConverter<out TOperation>
+    public interface IOperationConverter<out TOperation>
     {
         string ToMessage(string ask);
 
