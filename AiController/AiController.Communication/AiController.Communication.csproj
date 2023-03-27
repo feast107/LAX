@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AiController.Abstraction\AiController.Abstraction.csproj" />
     <ProjectReference Include="..\AiController.Infrastructure\AiController.Infrastructure.csproj" />
   </ItemGroup>
 
