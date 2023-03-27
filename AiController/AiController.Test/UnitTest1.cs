@@ -10,7 +10,7 @@ namespace AiController.Test
         {
             Communicator = new Gpt35AsyncCommunicator()
             {
-                ApiKey = "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",
+                ApiKey = "",
                 ApiHost = "openaiapi.elecho.top",
                 ModelName = "gpt-3.5-turbo",
                 Temperature = 0
