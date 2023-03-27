@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AiController.Abstraction\AiController.Abstraction.csproj" />
     <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
     <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
   </ItemGroup>
