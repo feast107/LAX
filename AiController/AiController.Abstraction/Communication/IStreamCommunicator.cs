@@ -1,4 +1,7 @@
-﻿namespace AiController.Communication
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+namespace AiController.Abstraction.Communication
 {
     public interface IStreamCommunicator
     {
