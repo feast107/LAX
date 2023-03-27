@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using AiController.Abstraction.Communication;
 using OpenAI.Chat;
 
 namespace AiController.Communication.GPT35

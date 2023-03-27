@@ -1,4 +1,4 @@
-﻿namespace AiController.Communication
+﻿namespace AiController.Abstraction.Communication
 {
     public interface ICommunicator
     {
