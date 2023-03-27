@@ -1,3 +1,4 @@
+using AiController.Abstraction.Communication;
 using AiController.Communication.GPT35;
 
 namespace AiController.Test
