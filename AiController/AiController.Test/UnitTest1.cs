@@ -4,13 +4,13 @@ namespace AiController.Test
 {
     public class Tests
     {
-        private IStreamCommunicator Communicator { get; set; }
+        private IAsyncCommunicator Communicator { get; set; }
         [SetUp]
         public void Setup()
         {
-            Communicator = new Gpt35Communicator
+            Communicator = new Gpt35AsyncCommunicator()
             {
-                ApiKey = "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",
+                ApiKey = "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",
                 ApiHost = "openaiapi.elecho.top",
                 ModelName = "gpt-3.5-turbo",
                 Temperature = 0
@@ -20,10 +20,15 @@ namespace AiController.Test
         [Test]
         public async Task Test1()
         {
-            await Communicator.Send("你在吗", (s) =>
+            try
             {
-                Console.Write(s);
-            });
+                var res = await Communicator.SendAsync("你能做到什么");
+                Assert.IsNotNull(res);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
             Assert.Pass();
         }
     }
