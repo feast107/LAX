@@ -1,5 +1,6 @@
 ﻿using AiController.Abstraction.Conversion;
 using System;
+using System.CommandLine;
 using System.Drawing;
 
 namespace AiController.Conversion.Converters
@@ -13,6 +14,7 @@ namespace AiController.Conversion.Converters
 
         public Action<PointF> ToOperation(string reply)
         {
+            
             throw new NotImplementedException();
         }
 
