@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AiController.Conversion
+﻿namespace AiController.Abstraction.Conversion
 {
     public interface ICommandConverter : ICommandConverter<object> { }
 
