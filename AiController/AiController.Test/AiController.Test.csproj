@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
+    <ProjectReference Include="..\AiController.Communication\AiController.Communication.Implements.csproj" />
     <ProjectReference Include="..\AiController.Conversion\AiController.Conversion.csproj" />
     <ProjectReference Include="..\AiController.Server\AiController.Server.csproj" />
     <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
