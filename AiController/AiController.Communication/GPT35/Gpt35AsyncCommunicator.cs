@@ -16,19 +16,13 @@ namespace AiController.Communication.GPT35
         /// <returns></returns>
         public Task<string> SendAsync(string message, CancellationToken token = default)
         {
-            return Client.ChatEndpoint.GetCompletionAsync(new(
-                    new[] { new ChatPrompt("user", message) },
-                    ModelName,
-                    Temperature), token)
+            return Client.ChatEndpoint.GetCompletionAsync(
+                GetChatRequest(new ChatPrompt(nameof(Role.user), message)), token)
                 .ContinueWith(response =>
                 {
-                    if (token.IsCancellationRequested)
+                    if (token.IsCancellationRequested || !response.IsCompletedSuccessfully)
                     {
                         return string.Empty;
-                    }
-                    if (response.Exception != null)
-                    {
-                        throw response.Exception;
                     }
                     return response.Result.Choices
                         .Aggregate(new StringBuilder(),
