@@ -1,7 +1,15 @@
 ﻿using OpenAI;
+using OpenAI.Chat;
 
 namespace AiController.Communication.GPT35
 {
+    public enum Role
+    {
+        system,
+        assistant,
+        user,
+    }
+
     public abstract class GptBaseCommunicator
     {
         public required string ModelName { get; init; }
@@ -12,5 +20,7 @@ namespace AiController.Communication.GPT35
             new(ApiKey),
             ApiHost != null ? new(ApiHost) : null);
         private OpenAIClient? client;
+
+        public ChatRequest GetChatRequest(params ChatPrompt[] prompts) => new ChatRequest(prompts, ModelName, Temperature);
     }
 }
