@@ -11,7 +11,8 @@ namespace AiController.Communication.GPT35
             CancellationToken token = default)
         {
             return Client.ChatEndpoint.StreamCompletionAsync(
-               GetChatRequest(new ChatPrompt(nameof(Role.user), message)), response =>
+               GetChatRequest(new ChatPrompt(nameof(Role.user), message)),
+               response =>
                 {
                     if (response == null || token.IsCancellationRequested) return;
                     handler?
