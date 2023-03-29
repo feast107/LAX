@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,17 @@ namespace AiController.Desktop.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        HubConnection? Client { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
         }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Client = new HubConnectionBuilder().WithUrl("http://localhost:????/service").Build();
+        }
+
     }
 }
