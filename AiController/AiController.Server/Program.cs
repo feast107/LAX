@@ -1,3 +1,6 @@
+using AiController.Server.Hubs;
+using AiController.Server.Service;
+
 namespace AiController.Server
 {
     public class Program
@@ -12,7 +15,8 @@ namespace AiController.Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddSingleton(typeof(IHubDispatchService<>), typeof(HubMessageDispatcher<>));
+            builder.Services.AddSignalR();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,7 +32,7 @@ namespace AiController.Server
 
 
             app.MapControllers();
-
+            app.MapHub<MessageHub>("/server");
             app.Run();
         }
     }
