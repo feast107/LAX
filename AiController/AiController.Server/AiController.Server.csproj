@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.3" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="7.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -15,6 +15,10 @@
     <ProjectReference Include="..\AiController.Abstraction\AiController.Abstraction.csproj" />
     <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
     <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
