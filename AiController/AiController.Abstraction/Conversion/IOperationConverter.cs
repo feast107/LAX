@@ -4,7 +4,7 @@
 
     public interface IOperationConverter<out TOperation>
     {
-        string ToMessage(string ask);
+        string ToMessage(object ask);
         TOperation ToOperation(string reply);
     }
 }
