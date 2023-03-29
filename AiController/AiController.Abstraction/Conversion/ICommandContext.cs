@@ -2,6 +2,6 @@
 {
     public interface ICommandContext
     {
-        string Context { get; }
+        object Context { get; }
     }
 }
