@@ -15,7 +15,6 @@ namespace AiController.Server.Hubs
 
         public override Task OnConnectedAsync()
         {
-            Service.OnHubConnect(this);
             return base.OnConnectedAsync();
         }
         public override Task OnDisconnectedAsync(Exception? exception)
