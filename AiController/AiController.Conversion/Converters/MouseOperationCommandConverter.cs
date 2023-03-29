@@ -9,9 +9,9 @@ namespace AiController.Conversion.Converters
         IOperationConverter<Action<PointF>>,
         ICommandContext
     {
-        public string ToMessage(string ask)
+        public string ToMessage(object ask)
         {
-            return ask;
+            return ask.ToString();
         }
 
         public Action<PointF> ToOperation(string reply)
@@ -19,6 +19,6 @@ namespace AiController.Conversion.Converters
             throw new NotImplementedException();
         }
 
-        public string Context { get; }
+        public object? Context { get; }
     }
 }
