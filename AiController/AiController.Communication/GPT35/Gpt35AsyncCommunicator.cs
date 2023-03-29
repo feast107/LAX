@@ -32,7 +32,7 @@ namespace AiController.Communication.GPT35
                     }
                     return response.Result.Choices
                         .Aggregate(new StringBuilder(),
-                            (sb, c) => sb.AppendLine(c.Delta.Content))
+                            (sb, c) => sb.AppendLine(c.Message.Content))
                         .ToString();
                 }, token);
         }
