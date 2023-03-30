@@ -1,10 +1,5 @@
-﻿using AiController.Abstraction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
+using AiController.Abstraction;
 
 namespace AiController.Transmission.SignalR
 {
@@ -17,6 +12,11 @@ namespace AiController.Transmission.SignalR
         public static MessageModel Transform(IDescriptor another)
         {
             return new MessageModel() { Identifier = another.Identifier, Description = another.Description };
+        }
+
+        public override string ToString()
+        {
+            return JsonSerializer.Serialize(this);
         }
     }
 }
