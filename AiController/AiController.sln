@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Conversion", "AiController.Conversion\AiController.Conversion.csproj", "{2F27BA71-AD38-487D-A74D-7F244F04E608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Operation", "AiController.Operation\AiController.Operation.csproj", "{2F27BA71-AD38-487D-A74D-7F244F04E608}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Desktop.Wpf", "AiController.Desktop.Wpf\AiController.Desktop.Wpf.csproj", "{19A28A9D-3B20-4174-A2E7-E5FE3D4CD1F9}"
 EndProject
@@ -17,13 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Infrastructure
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Communication", "Communication", "{68B33CAE-7D0E-46D9-BC7B-3F4B0F86AC2C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conversion", "Conversion", "{9A6564DA-1377-44F0-AED2-233FB02A7672}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Operation", "Operation", "{9A6564DA-1377-44F0-AED2-233FB02A7672}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Execution", "Execution", "{05E610E0-09A9-46AA-A477-25FF67A50729}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Communication", "AiController.Communication\AiController.Communication.csproj", "{361F6A9F-9A21-4438-9365-84F124494F73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Abstraction", "AiController.Abstraction\AiController.Abstraction.csproj", "{570A34F6-D3C2-4F85-95F5-B635C35F24D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Abstraction", "AiController.Abstraction\AiController.Abstraction.csproj", "{570A34F6-D3C2-4F85-95F5-B635C35F24D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

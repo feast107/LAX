@@ -20,7 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AiController.Abstraction\AiController.Abstraction.csproj" />
     <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
-    <ProjectReference Include="..\AiController.Conversion\AiController.Conversion.csproj" />
+    <ProjectReference Include="..\AiController.Operation\AiController.Operation.csproj" />
     <ProjectReference Include="..\AiController.Server\AiController.Server.csproj" />
     <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
   </ItemGroup>

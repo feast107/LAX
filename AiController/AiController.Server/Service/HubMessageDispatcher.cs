@@ -6,16 +6,12 @@ namespace AiController.Server.Service
 {
     public class HubMessageDispatcher<THub> : IHubDispatchService<THub> where THub : Hub
     {
-        public HubMessageDispatcher(IAsyncCommunicator communicator,
-            IOperator<Action<Dictionary<string, THub>>> operationConverter)
+        public HubMessageDispatcher(IOperator<Action<Dictionary<string, THub>>> operationConverter)
         {
-            this.communicator = communicator;
             this.operationConverter = operationConverter;
         }
 
         private readonly Dictionary<string, THub> ConnectedHubs = new();
-
-        private readonly IAsyncCommunicator communicator;
 
         private readonly IOperator<Action<Dictionary<string, THub>>> operationConverter;
 
@@ -32,14 +28,7 @@ namespace AiController.Server.Service
 
         public void OnReceiveMessage(THub hub, string message)
         {
-            communicator
-                .SendAsync(operationConverter
-                .ToMessage(message))
-                .ContinueWith(x => {
-                    operationConverter
-                    .ToOperation(x.Result)
-                    .Invoke(ConnectedHubs);
-                });
+           
         }
 
         public bool OnRegister(THub hub, string name) => ConnectedHubs.TryAdd(name, hub);
