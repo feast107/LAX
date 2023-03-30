@@ -1,6 +1,7 @@
 ﻿using OpenAI.Chat;
 using System.Text;
 using AiController.Abstraction.Communication;
+using AiController.Infrastructure;
 
 namespace AiController.Communication.GPT35
 {
@@ -22,7 +23,9 @@ namespace AiController.Communication.GPT35
                 {
                     if (token.IsCancellationRequested || !response.IsCompletedSuccessfully)
                     {
-                        return string.Empty;
+                        return string.Empty.With(
+                            response.Exception != null ? 
+                            $"ChatGPT异常: {response.Exception}" : "");
                     }
                     return response.Result.Choices
                         .Aggregate(new StringBuilder(),
