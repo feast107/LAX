@@ -6,8 +6,8 @@ using System.Drawing;
 namespace AiController.Conversion.Converters
 {
     public class MouseOperationCommandConverter :
-        IOperationConverter<Action<PointF>>,
-        ICommandContext
+        IOperator<Action<PointF>>,
+        ISubject
     {
         public string ToMessage(object ask)
         {
@@ -19,6 +19,12 @@ namespace AiController.Conversion.Converters
             throw new NotImplementedException();
         }
 
+        public string ToMessage(object subject, object ask)
+        {
+            throw new NotImplementedException();
+        }
+
         public object? Context { get; }
+        object ISubject.Context { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
