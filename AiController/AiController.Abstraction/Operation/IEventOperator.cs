@@ -1,6 +1,6 @@
 ﻿namespace AiController.Abstraction.Operation
 {
-    public interface IEventOperator<TOperation>
+    public interface IEventOperator<TOperation> : IDescriptor
     {
         void Send(object ask);
 
