@@ -10,22 +10,31 @@ public class Program
         Console.WriteLine("Hello, World!");
 
         var connection = new HubConnectionBuilder().WithUrl("http://localhost:5030/server").Build();
+        Console.Write("Your Identifier :");
+        var identifier = Console.ReadLine() ?? "Client";
+
+        Console.Write("Your Description :");
+        var description = Console.ReadLine() ?? "This is Windows operating system Client";
+
         var client = new SignalRClientOperator(connection)
         {
-            Identifier = "Client1",
-            Description = "This is Windows operating system Client1"
+            Identifier = identifier,
+            Description = description
         };
+        client.OnReceiveOperation += (s) => { Console.WriteLine($"\nServer: {s}"); };
         var task = client.StartAsync();
         task.Wait();
-        if (task.IsCompletedSuccessfully)
-        {
-            Console.WriteLine("SUCCESS");
-        }
-        else
-        {
-            Console.WriteLine("FAILED");
-        }
+        Console.WriteLine(task.IsCompletedSuccessfully ? "Connect success" : "Connect failed");
         client.Register().Wait();
+        Console.Write("You:");
+        var message = Console.ReadLine();
+        while (message is not null or "q")
+        {
+            client.Send(message);
+            Console.Write("You:");
+            message = Console.ReadLine();
+        }
+        Console.WriteLine("quit");
         Console.ReadLine();
     }
 }
