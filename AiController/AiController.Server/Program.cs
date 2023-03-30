@@ -19,8 +19,12 @@ namespace AiController.Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddSingleton(typeof(IAsyncCommunicator<ChatPrompt[]>), typeof(Gpt35AsyncCommunicator));
-            builder.Services.AddSingleton<Gpt35DistributeEventOperator>();
+            //builder.Services.AddSingleton(typeof(IAsyncCommunicator<ChatPrompt[]>), typeof(Gpt35AsyncCommunicator));
+            builder.Services.AddSingleton<IAsyncCommunicator<ChatPrompt[]>>(new Gpt35AsyncCommunicator()
+            {
+                
+            });
+            builder.Services.AddSingleton(typeof(Gpt35DistributeAsyncOperator));
             builder.Services.AddSingleton(typeof(IHubDispatchService<>), typeof(HubMessageDispatcher<>));
             builder.Services.AddSignalR();
             var app = builder.Build();
