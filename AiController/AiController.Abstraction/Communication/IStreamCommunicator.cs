@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace AiController.Abstraction.Communication
+namespace AiController.Abstraction.Communication;
+
+public interface IStreamCommunicator : IStreamCommunicator<string> { }
+public interface IStreamCommunicator<TMessage>
 {
-    public interface IStreamCommunicator
-    {
-        delegate void MessageHandler(string message);
-        Task Send(string message, MessageHandler handler, CancellationToken token = default);
-    }
+    delegate void MessageHandler(string message);
+    Task Send(TMessage message, MessageHandler handler, CancellationToken token = default);
 }

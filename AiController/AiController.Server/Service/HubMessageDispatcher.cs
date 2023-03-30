@@ -1,5 +1,5 @@
 ﻿using AiController.Abstraction.Communication;
-using AiController.Abstraction.Conversion;
+using AiController.Abstraction.Operation;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AiController.Server.Service

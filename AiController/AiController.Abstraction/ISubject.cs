@@ -2,6 +2,6 @@
 {
     public interface ISubject
     {
-        object Subject { get; init; }
+        string Identifier { get; init; }
     }
 }

@@ -23,4 +23,9 @@ namespace AiController.Communication.GPT35
 
         public ChatRequest GetChatRequest(params ChatPrompt[] prompts) => new ChatRequest(prompts, ModelName, Temperature);
     }
+
+    public static class ChatGptExtension 
+    {
+        public static ChatPrompt ToChatPrompt(this string message, Role role) => new (role.ToString(), message);
+    }
 }

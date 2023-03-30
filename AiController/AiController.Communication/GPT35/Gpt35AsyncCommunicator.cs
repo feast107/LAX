@@ -4,7 +4,7 @@ using AiController.Abstraction.Communication;
 
 namespace AiController.Communication.GPT35
 {
-    public class Gpt35AsyncCommunicator : GptBaseCommunicator, IAsyncCommunicator
+    public class Gpt35AsyncCommunicator : GptBaseCommunicator, IAsyncCommunicator<ChatPrompt[]>
     {
         /// <summary>
         /// 发送消息
@@ -14,10 +14,10 @@ namespace AiController.Communication.GPT35
         /// <param name="message"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task<string> SendAsync(string message, CancellationToken token = default)
+        public Task<string> SendAsync(ChatPrompt[] message, CancellationToken token = default)
         {
             return Client.ChatEndpoint.GetCompletionAsync(
-                GetChatRequest(new ChatPrompt(nameof(Role.user), message)), token)
+                GetChatRequest(message), token)
                 .ContinueWith(response =>
                 {
                     if (token.IsCancellationRequested || !response.IsCompletedSuccessfully)

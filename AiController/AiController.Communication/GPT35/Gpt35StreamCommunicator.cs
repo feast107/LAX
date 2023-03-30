@@ -4,14 +4,14 @@ using OpenAI.Chat;
 
 namespace AiController.Communication.GPT35
 {
-    public class Gpt35StreamCommunicator : GptBaseCommunicator, IStreamCommunicator
+    public class Gpt35StreamCommunicator : GptBaseCommunicator, IStreamCommunicator<ChatPrompt[]>
     {
-        public Task Send(string message,
-            IStreamCommunicator.MessageHandler handler,
+        public Task Send(ChatPrompt[] message,
+            IStreamCommunicator<ChatPrompt[]>.MessageHandler handler,
             CancellationToken token = default)
         {
             return Client.ChatEndpoint.StreamCompletionAsync(
-               GetChatRequest(new ChatPrompt(nameof(Role.user), message)),
+               GetChatRequest(message),
                response =>
                 {
                     if (response == null || token.IsCancellationRequested) return;

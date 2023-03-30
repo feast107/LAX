@@ -1,7 +1,7 @@
-﻿namespace AiController.Abstraction.Communication
+﻿namespace AiController.Abstraction.Communication;
+
+public interface ICommunicator : ICommunicator<string> { }
+public interface ICommunicator<TMessage>
 {
-    public interface ICommunicator
-    {
-        string Send(string message);
-    }
+    string Send(TMessage message);
 }

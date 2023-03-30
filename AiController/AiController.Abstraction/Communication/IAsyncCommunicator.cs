@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace AiController.Abstraction.Communication
+namespace AiController.Abstraction.Communication;
+
+public interface IAsyncCommunicator : IAsyncCommunicator<string> { }
+public interface IAsyncCommunicator<TMessage>
 {
-    public interface IAsyncCommunicator
-    {
-        Task<string> SendAsync(string message, CancellationToken token = default);
-    }
+    Task<string> SendAsync(TMessage message, CancellationToken token = default);
 }

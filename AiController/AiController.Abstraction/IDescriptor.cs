@@ -2,6 +2,6 @@
 {
     public interface IDescriptor : ISubject
     {
-        object Description { get; set; }
+        string Description { get; set; }
     }
 }

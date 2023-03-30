@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace AiController.Abstraction.Operation
+namespace AiController.Abstraction.Operation;
+
+public interface IAsyncOperator<TOperation> : IDescriptor
 {
-    public interface IAsyncOperator<TOperation> : IDescriptor
-    {
-        Task<TOperation> SendAsync(object ask);
-    }
+    Task<TOperation> SendAsync(object ask);
 }

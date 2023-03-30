@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
 	  <LangVersion>preview</LangVersion>
   </PropertyGroup>
@@ -12,7 +12,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AiController.Abstraction\AiController.Abstraction.csproj" />
+    <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
     <ProjectReference Include="..\AiController.Infrastructure\AiController.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Operators\Indirect\" />
   </ItemGroup>
 
 </Project>
