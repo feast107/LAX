@@ -7,7 +7,7 @@ namespace AiController.Server.Service
     public class HubMessageDispatcher<THub> : IHubDispatchService<THub> where THub : Hub
     {
         public HubMessageDispatcher(IAsyncCommunicator communicator,
-            IOperationConverter<Action<Dictionary<string, THub>>> operationConverter)
+            IOperator<Action<Dictionary<string, THub>>> operationConverter)
         {
             this.communicator = communicator;
             this.operationConverter = operationConverter;
@@ -17,7 +17,7 @@ namespace AiController.Server.Service
 
         private readonly IAsyncCommunicator communicator;
 
-        private readonly IOperationConverter<Action<Dictionary<string, THub>>> operationConverter;
+        private readonly IOperator<Action<Dictionary<string, THub>>> operationConverter;
 
         public void OnHubDisconnect(THub hub)
         {
