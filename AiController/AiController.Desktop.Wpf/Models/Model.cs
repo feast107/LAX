@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AiController.Desktop.Wpf.Models
+﻿namespace AiController.Desktop.Wpf.Models
 {
     public partial class Model
     {

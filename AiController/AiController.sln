@@ -25,6 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Communication"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiController.Abstraction", "AiController.Abstraction\AiController.Abstraction.csproj", "{570A34F6-D3C2-4F85-95F5-B635C35F24D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Console", "AiController.Console\AiController.Console.csproj", "{5C6D1746-C1AE-4447-AD2D-3BF7B5CD18FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiController.Client", "AiController.Client\AiController.Client.csproj", "{5B436529-7B58-4A28-83FD-5031CBD805D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{570A34F6-D3C2-4F85-95F5-B635C35F24D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{570A34F6-D3C2-4F85-95F5-B635C35F24D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{570A34F6-D3C2-4F85-95F5-B635C35F24D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6D1746-C1AE-4447-AD2D-3BF7B5CD18FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6D1746-C1AE-4447-AD2D-3BF7B5CD18FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6D1746-C1AE-4447-AD2D-3BF7B5CD18FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6D1746-C1AE-4447-AD2D-3BF7B5CD18FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B436529-7B58-4A28-83FD-5031CBD805D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B436529-7B58-4A28-83FD-5031CBD805D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B436529-7B58-4A28-83FD-5031CBD805D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B436529-7B58-4A28-83FD-5031CBD805D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +84,7 @@ Global
 		{19A28A9D-3B20-4174-A2E7-E5FE3D4CD1F9} = {05E610E0-09A9-46AA-A477-25FF67A50729}
 		{B643B073-D26C-4A01-8F13-BE1FE091BF53} = {05E610E0-09A9-46AA-A477-25FF67A50729}
 		{361F6A9F-9A21-4438-9365-84F124494F73} = {68B33CAE-7D0E-46D9-BC7B-3F4B0F86AC2C}
+		{5B436529-7B58-4A28-83FD-5031CBD805D6} = {05E610E0-09A9-46AA-A477-25FF67A50729}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8F1592F-F648-41BB-AE59-8016DD2A9F60}

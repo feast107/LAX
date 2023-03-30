@@ -1,7 +1,6 @@
-﻿using AiController.Abstraction.Communication;
-using AiController.Communication.GPT35;
-using AiController.Server.Service;
+﻿using AiController.Server.Service;
 using Microsoft.AspNetCore.SignalR;
+using AiController.Transmission.SignalR;
 
 namespace AiController.Server.Hubs
 {
@@ -19,14 +18,14 @@ namespace AiController.Server.Hubs
         }
         public override Task OnDisconnectedAsync(Exception? exception)
         {
-            Service.OnHubDisconnect(this);
+            Service.OnHubDisconnect(Context.ConnectionId);
             return base.OnDisconnectedAsync(exception);
         }
-        public async Task Register(string name) =>
+        public async Task Register(MessageModel message) =>
             await Clients
             .Caller
             .SendAsync(nameof(Register), 
-                Service.OnRegister(this, name));
+                Service.OnRegister(this, message));
 
         public void SendMessage(string message) => Service.OnReceiveMessage(this, message);
     }

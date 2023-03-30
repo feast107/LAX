@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using AiController.Abstraction;
+using Microsoft.AspNetCore.SignalR;
 
 namespace AiController.Server.Service
 {
     public interface IHubDispatchService<THub> where THub : Hub
     {
-        void OnHubDisconnect(THub hub);
-        bool OnRegister(THub hub, string name);
+        void OnHubDisconnect(string connectionId);
+        bool OnRegister(THub hub, IDescriptor name);
         void OnReceiveMessage(THub hub, string message);
     }
 }

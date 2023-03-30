@@ -1,36 +1,49 @@
-﻿using AiController.Abstraction.Communication;
-using AiController.Abstraction.Operation;
+﻿using AiController.Abstraction;
+using AiController.Operation.Operators.Direct;
+using AiController.Server.Hubs;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AiController.Server.Service
 {
     public class HubMessageDispatcher<THub> : IHubDispatchService<THub> where THub : Hub
     {
-        public HubMessageDispatcher(IOperator<Action<Dictionary<string, THub>>> operationConverter)
+        public HubMessageDispatcher(Gpt35DistributeAsyncOperator asyncOperator)
         {
-            this.operationConverter = operationConverter;
+            this.asyncOperator = asyncOperator;
         }
 
-        private readonly Dictionary<string, THub> ConnectedHubs = new();
+        private readonly Dictionary<string, Tuple<IDescriptor, THub>> ConnectedHubs = new();
 
-        private readonly IOperator<Action<Dictionary<string, THub>>> operationConverter;
+        private readonly Gpt35DistributeAsyncOperator asyncOperator;
 
-        public void OnHubDisconnect(THub hub)
+        private Task<Tuple<string, string>?>? CurrentRequest;
+
+        public void OnHubDisconnect(string connectionId)
         {
-            foreach(var pair in ConnectedHubs)
-            {
-                if(pair.Value == hub)
-                {
-                    ConnectedHubs.Remove(pair.Key);
-                }
-            }
+            ConnectedHubs.Remove(connectionId);
         }
 
         public void OnReceiveMessage(THub hub, string message)
         {
-           
+            if (CurrentRequest == null)
+            {
+                CurrentRequest = asyncOperator.SendAsync(message);
+            }
+            else
+            {
+                CurrentRequest = CurrentRequest.ContinueWith(t => asyncOperator.SendAsync(message).Result);
+            }
+            CurrentRequest.ContinueWith(task =>
+                {
+                    if (task.Result == null) return;
+                    if (ConnectedHubs.TryGetValue(task.Result.Item1, out var tuple))
+                    {
+                        tuple.Item2.Clients.Caller.SendAsync(task.Result.Item2);
+                    }
+                });
         }
 
-        public bool OnRegister(THub hub, string name) => ConnectedHubs.TryAdd(name, hub);
+        public bool OnRegister(THub hub, IDescriptor identifier) =>
+            ConnectedHubs.TryAdd(hub.Context.ConnectionId, new(identifier, hub));
     }
 }

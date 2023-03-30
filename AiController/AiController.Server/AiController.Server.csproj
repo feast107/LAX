@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AiController.Abstraction\AiController.Abstraction.csproj" />
     <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
+    <ProjectReference Include="..\AiController.Operation\AiController.Operation.csproj" />
     <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
   </ItemGroup>
 
