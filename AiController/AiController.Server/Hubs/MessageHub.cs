@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace AiController.Server.Hubs
 {
-    public class MessageHub<TOperator, TMessage> : Hub 
-        where TOperator : class , IAsyncOperator<TMessage> , new()
+    public class MessageHub<TOperator, TMessage> : Hub
+        where TOperator : class, IAsyncOperator<TMessage>, new()
     {
         public MessageHub(IHubDispatchService<MessageHub<TOperator, TMessage>, TOperator, TMessage> service)
         {
@@ -27,7 +27,7 @@ namespace AiController.Server.Hubs
         public async Task Register(TOperator message) =>
             await Clients
             .Caller
-            .SendAsync(nameof(Register), 
+            .SendAsync(nameof(Register),
                 Service.OnRegister(this, message));
 
         public async Task Send(string message) => await Service.OnReceiveMessage(this, message);
