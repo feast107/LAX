@@ -46,7 +46,7 @@ namespace AiController.Server
 
 
             app.MapControllers();
-            app.MapHub<MessageHub<Gpt35ClientOperator, DistributeMessageModel?>>("/server");
+            app.MapHub<MessageHub<Gpt35ClientOperator<DistributeMessageModel?>, DistributeMessageModel?>>("/server");
             app.Run();
         }
     }
