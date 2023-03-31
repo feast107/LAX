@@ -5,7 +5,7 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.WriteLine("Hello, Gpt!");
 
         var connection = new HubConnectionBuilder().WithUrl("http://localhost:5030/server").Build();
         AppDomain.CurrentDomain.ProcessExit += async (o, e) => { await connection.DisposeAsync(); };

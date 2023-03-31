@@ -1,8 +1,7 @@
-﻿using System.Text.Json.Serialization;
-using AiController.Abstraction.Operation;
-using AiController.Client.SignalR;
+﻿using AiController.Abstraction.Operation;
 using AiController.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
+using System.Text.Json.Serialization;
 
 namespace AiController.Client.SignalR;
 

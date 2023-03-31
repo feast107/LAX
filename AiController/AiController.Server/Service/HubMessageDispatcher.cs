@@ -34,7 +34,7 @@ namespace AiController.Server.Service
 
         public async Task OnReceiveMessage(THub hub, string message)
         {
-            var field = connectedHubs[hub.Context.ConnectionId];
+            if (!connectedHubs.TryGetValue(hub.Context.ConnectionId, out var field)) return;
             currentRequest = currentRequest == null
                 ? field.Item1.SendAsync($"{field.Item1.Identifier} \n{message}")
                 : currentRequest.ContinueWith(_ => field.Item1.SendAsync(message).Result);
@@ -42,9 +42,9 @@ namespace AiController.Server.Service
             {
                 if (task.Result?.device == null) return;
                 Console.WriteLine(task.Result);
-                foreach (var pair in connectedHubs)
+                foreach (var pair in connectedHubs
+                             .Where(pair => pair.Value.Item1.Identifier.Trim() == task.Result.device.Trim()))
                 {
-                    if (pair.Value.Item1.Identifier.Trim() != task.Result.device.Trim()) return;
                     hub.Clients
                         .Client(pair.Key)
                         .SendAsync(nameof(InvokeMethod.Receive), task.Result.reply);
