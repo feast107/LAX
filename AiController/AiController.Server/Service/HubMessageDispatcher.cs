@@ -1,26 +1,29 @@
 ﻿using AiController.Abstraction.Operation;
 using AiController.Infrastructure;
-using AiController.Operation.Operators.Direct;
+using AiController.Operation.Operators;
+using AiController.Server.Interface;
 using AiController.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AiController.Server.Service
 {
-    public class HubMessageDispatcher<THub, TOperator, TMessage>
-        : IHubDispatchService<THub, TOperator, TMessage>
+    public class HubMessageDispatcher<THub, TOperator>
+        : IHubDispatchService<THub, TOperator>
         where THub : Hub
-        where TOperator : IAsyncOperator<TMessage>
+        where TOperator : IAsyncOperator<DistributeMessageModel?>, IProxied<IAsyncOperator<DistributeMessageModel?>> 
     {
-        public HubMessageDispatcher(Gpt35DistributeAsyncOperator asyncOperator)
+        public HubMessageDispatcher(IExtensibleAsyncOperator<DistributeMessageModel?> asyncOperator)
         {
             this.asyncOperator = asyncOperator;
         }
 
+
         private readonly Dictionary<string, Tuple<TOperator, THub>> connectedHubs = new();
 
-        private readonly Gpt35DistributeAsyncOperator asyncOperator;
+        private readonly IExtensibleAsyncOperator<DistributeMessageModel?> asyncOperator;
 
         private Task<DistributeMessageModel?>? currentRequest;
+
 
         public void OnHubDisconnect(string connectionId)
         {
@@ -33,8 +36,8 @@ namespace AiController.Server.Service
         {
             var field = connectedHubs[hub.Context.ConnectionId];
             currentRequest = currentRequest == null
-                ? asyncOperator.SendAsync($"{field.Item1.Identifier} \n{message}")
-                : currentRequest.ContinueWith(_ => asyncOperator.SendAsync(message).Result);
+                ? field.Item1.SendAsync($"{field.Item1.Identifier} \n{message}")
+                : currentRequest.ContinueWith(_ => field.Item1.SendAsync(message).Result);
             await currentRequest.ContinueWith(task =>
             {
                 if (task.Result?.device == null) return;
@@ -51,6 +54,7 @@ namespace AiController.Server.Service
 
         public bool OnRegister(THub hub, TOperator identifier)
         {
+            identifier.Proxy = asyncOperator;
             if (connectedHubs.TryGetValue(hub.Context.ConnectionId, out var field))
             {
                 asyncOperator.Remove(field.Item1);

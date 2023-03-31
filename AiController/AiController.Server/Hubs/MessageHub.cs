@@ -1,17 +1,19 @@
 ﻿using AiController.Abstraction.Operation;
+using AiController.Server.Interface;
 using AiController.Server.Service;
+using AiController.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AiController.Server.Hubs
 {
-    public class MessageHub<TOperator, TMessage> : Hub
-        where TOperator : class, IAsyncOperator<TMessage>, new()
+    public class MessageHub<TOperator> : Hub
+        where TOperator : class, IAsyncOperator<DistributeMessageModel>, IProxied<IAsyncOperator<DistributeMessageModel>>, new()
     {
-        public MessageHub(IHubDispatchService<MessageHub<TOperator, TMessage>, TOperator, TMessage> service)
+        public MessageHub(IHubDispatchService<MessageHub<TOperator>, TOperator> service)
         {
             Service = service;
         }
-        public readonly IHubDispatchService<MessageHub<TOperator, TMessage>, TOperator, TMessage> Service;
+        public readonly IHubDispatchService<MessageHub<TOperator>, TOperator> Service;
 
         public override Task OnConnectedAsync()
         {

@@ -3,7 +3,6 @@ using AiController.Abstraction.Communication;
 using AiController.Communication.GPT35;
 using OpenAI.Chat;
 using System.Threading.Tasks;
-using AiController.Infrastructure;
 
 namespace AiController.Operation.Operators.Base;
 

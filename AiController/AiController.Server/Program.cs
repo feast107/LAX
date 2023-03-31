@@ -1,9 +1,9 @@
 using AiController.Abstraction.Communication;
-using AiController.Abstraction.Operation;
 using AiController.Communication.GPT35;
 using AiController.Operation.Operators.Direct;
 using AiController.Operation.Operators.Indirect;
 using AiController.Server.Hubs;
+using AiController.Server.Interface;
 using AiController.Server.Service;
 using AiController.Transmission.SignalR;
 using OpenAI.Chat;
@@ -25,10 +25,10 @@ namespace AiController.Server
             //builder.Services.AddSingleton(typeof(IAsyncCommunicator<ChatPrompt[]>), typeof(Gpt35AsyncCommunicator));
             builder.Services.AddSingleton<IAsyncCommunicator<ChatPrompt[]>>(new Gpt35AsyncCommunicator()
             {
-                
+
             });
             builder.Services.AddSingleton(typeof(Gpt35DistributeAsyncOperator));
-            builder.Services.AddSingleton(typeof(IHubDispatchService<,,>), typeof(HubMessageDispatcher<,,>));
+            builder.Services.AddSingleton(typeof(IHubDispatchService<,>), typeof(HubMessageDispatcher<,>));
             builder.Services.AddSignalR();
 
             var app = builder.Build();
@@ -46,7 +46,7 @@ namespace AiController.Server
 
 
             app.MapControllers();
-            app.MapHub<MessageHub<Gpt35ClientOperator<DistributeMessageModel?>, DistributeMessageModel?>>("/server");
+            app.MapHub<MessageHub<Gpt35ClientOperator<DistributeMessageModel?>>>("/server");
             app.Run();
         }
     }
