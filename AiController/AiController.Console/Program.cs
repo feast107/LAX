@@ -1,15 +1,15 @@
 ﻿using AiController.Client.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 
-namespace AiController.Test;
-
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
 
         var connection = new HubConnectionBuilder().WithUrl("http://localhost:5030/server").Build();
+        AppDomain.CurrentDomain.ProcessExit += async (o, e) => { await connection.DisposeAsync(); };
+
         Console.Write("Your Identifier :");
         var identifier = Console.ReadLine() ?? "Client";
 
@@ -21,11 +21,11 @@ public class Program
             Identifier = identifier,
             Description = description
         };
-        client.OnReceiveOperation += (s) => { Console.WriteLine($"\nServer: {s}"); };
+        client.OnReceiveOperation += s => { Console.WriteLine($"\nServer: {s}"); };
         var task = client.StartAsync();
-        task.Wait();
+        await task;
         Console.WriteLine(task.IsCompletedSuccessfully ? "Connect success" : "Connect failed");
-        client.Register().Wait();
+        await client.Register();
         Console.Write("You:");
         var message = Console.ReadLine();
         while (message is not null or "q")
@@ -38,8 +38,3 @@ public class Program
         Console.ReadLine();
     }
 }
-/*var r = new SignalRClientOperator(connection)
-{
-    Identifier = "Client1",
-    Description = "This is Windows operating system 'Client1'",
-};*/

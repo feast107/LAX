@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.SignalR;
 namespace AiController.Server.Hubs
 {
     public class MessageHub<TOperator> : Hub
-        where TOperator : class, IAsyncOperator<DistributeMessageModel>, IProxied<IAsyncOperator<DistributeMessageModel>>, new()
+        where TOperator : class, IAsyncOperator<DistributeMessageModel?>, IProxied<IAsyncOperator<DistributeMessageModel?>>, new()
     {
         public MessageHub(IHubDispatchService<MessageHub<TOperator>, TOperator> service)
         {

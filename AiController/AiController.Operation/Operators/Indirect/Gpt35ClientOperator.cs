@@ -7,7 +7,7 @@ namespace AiController.Operation.Operators.Indirect
     public class Gpt35ClientOperator<TMessage>
         : IAsyncOperator<TMessage>, IProxied<IAsyncOperator<TMessage>>
     {
-        [JsonIgnore] public IAsyncOperator<TMessage> Proxy { get; set; }
+        [JsonIgnore] public IAsyncOperator<TMessage> Proxy { get; set; } = null!;
 
         public Task<TMessage> SendAsync(string ask)
         {
