@@ -1,4 +1,4 @@
-# AiController
+# :globe_with_meridians: AiController
 AI control under distributed systems
 
 # Demo
