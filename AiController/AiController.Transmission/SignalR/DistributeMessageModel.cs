@@ -1,9 +1,11 @@
 ﻿using System.Text.Json;
+using AiController.Abstraction;
 
 namespace AiController.Transmission.SignalR
 {
-    public class DistributeMessageModel
+    public class DistributeMessageModel 
     {
+        [Description("")]
         public string? device { get; set; }
         public string? reply { get; set; }
 
