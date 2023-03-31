@@ -5,16 +5,18 @@ using System.Threading.Tasks;
 
 namespace AiController.Operation.Operators.Indirect
 {
-    public class Gpt35ClientOperator : IAsyncOperator<DistributeMessageModel?>
+    public class Gpt35ClientOperator<TMessage>
+        : IAsyncOperator<TMessage> , 
+            IProxied<IAsyncOperator<TMessage>>
     {
-        [JsonIgnore] public IAsyncOperator<DistributeMessageModel?> ServerSender { get; set; }
+        [JsonIgnore] public IAsyncOperator<TMessage> Proxy { get; set; }
 
-        public Task<DistributeMessageModel?> SendAsync(string ask)
+        public Task<TMessage> SendAsync(string ask)
         {
-            return ServerSender.SendAsync($"{Identifier} \n{ask}");
+            return Proxy.SendAsync($"{Identifier} \n{ask}");
         }
 
-        public  string Identifier { get; init; }
-        public  string Description { get; set; }
+        public string Identifier { get; init; }
+        public string Description { get; set; }
     }
 }
