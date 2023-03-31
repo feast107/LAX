@@ -10,7 +10,8 @@ namespace AiController.Operation.Operators.Base;
 public abstract class Gpt35BasedOperator : IDescriptor 
 {
     public abstract string Description { get; set; }
-    public required string Identifier { get; init; } = "这是中心服务器:[Server]";
+    public required string Identifier { get; init; } = "You are a savvy central server: [Central]," +
+                                                       "Responsible for scheduling client messages";
 
     protected Gpt35BasedOperator(IAsyncCommunicator<ChatPrompt[]> communicator)
     {
