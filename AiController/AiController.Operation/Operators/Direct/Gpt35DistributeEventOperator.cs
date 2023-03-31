@@ -16,7 +16,7 @@ namespace AiController.Operation.Operators.Direct
 {
     public abstract class Gpt35DistributeBasedOperator :
         Gpt35BasedOperator,
-        IExtensibleSemanteme
+        IExtensible
     {
         protected Gpt35DistributeBasedOperator(IAsyncCommunicator<ChatPrompt[]> communicator) : base(communicator) { }
 
