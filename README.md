@@ -19,3 +19,15 @@ They may contains
 + Authentication
 
 `Dynamic proxy` enable AI to intervene in every link.
+
+# Structure
++ [`Abstraction`](./AiController/AiController.Abstraction/) Interfaces that define how to communicate and transform messages.
++ `Operation`
+  + [`Operation`](./AiController/AiController.Operation/) Implements of message transformations.
++ `Communication`
+  + [`Communication`](./AiController/AiController.Communication/) Implements of communication with AI.
++ `Execution`
+  + [`Client`](./AiController/AiController.Client/) Client behaviors
+  + [`Console`](./AiController/AiController.Console/) Demo
+  + [`Desktop.Wpf`](./AiController/AiController.Desktop.Wpf/) Desktop
+  + [`Server`](./AiController/AiController.Server/) SignalR server
