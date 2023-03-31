@@ -1,4 +1,4 @@
-﻿using AiController.Abstraction;
+﻿using AiController.Abstraction.Operation;
 using AiController.Infrastructure;
 using AiController.Operation.Operators.Direct;
 using AiController.Transmission.SignalR;
@@ -6,14 +6,17 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace AiController.Server.Service
 {
-    public class HubMessageDispatcher<THub> : IHubDispatchService<THub> where THub : Hub
+    public class HubMessageDispatcher<THub, TOperator, TMessage>
+        : IHubDispatchService<THub, TOperator, TMessage>
+        where THub : Hub
+        where TOperator : IAsyncOperator<TMessage>
     {
         public HubMessageDispatcher(Gpt35DistributeAsyncOperator asyncOperator)
         {
             this.asyncOperator = asyncOperator;
         }
 
-        private readonly Dictionary<string, Tuple<IDescriptor, THub>> connectedHubs = new();
+        private readonly Dictionary<string, Tuple<TOperator, THub>> connectedHubs = new();
 
         private readonly Gpt35DistributeAsyncOperator asyncOperator;
 
@@ -46,7 +49,7 @@ namespace AiController.Server.Service
             });
         }
 
-        public bool OnRegister(THub hub, IDescriptor identifier)
+        public bool OnRegister(THub hub, TOperator identifier)
         {
             if (connectedHubs.TryGetValue(hub.Context.ConnectionId, out var field))
             {
