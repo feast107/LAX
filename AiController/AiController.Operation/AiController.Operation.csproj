@@ -17,8 +17,4 @@
     <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Operators\Indirect\" />
-  </ItemGroup>
-
 </Project>
