@@ -1,5 +1,9 @@
 # :globe_with_meridians: LAX
-LAX (Language-based Ai Communication System)
+
+<div align="center">
+  <img src="./doc/LAX_round.png" width="200"/>
+  <h2>LAX (Language-based Ai Communication System)<h2>
+</div>
 
 # Demo
 ![](./doc/Example.png)
