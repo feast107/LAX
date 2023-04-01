@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "AiController.Desktop.Wpf": {
+      "commandName": "Project"
+    }
+  }
+}
