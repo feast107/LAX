@@ -39,11 +39,11 @@ namespace LAX.Desktop.Wpf.Views
                 {
                     Owner = Application.Current.MainWindow,
                 };
-                configure.OnConnected += (opera) =>
+                configure.OnConnected += opera =>
                 {
                     this.eventOperator = opera;
                     this.MainTitle.Text = opera.Identifier;
-                    this.eventOperator.OnReceiveOperation += (s) =>
+                    this.eventOperator.OnReceiveOperation += s =>
                     {
                         var responseMessage = new ChatMessage()
                         {

@@ -27,7 +27,6 @@ public class Program
         var task = client.StartAsync();
         await task;
         System.Console.WriteLine(task.IsCompletedSuccessfully ? "Connect success" : "Connect failed");
-        await client.Register();
         System.Console.Write("You:");
         var message = System.Console.ReadLine();
         while (message is not null or "q")

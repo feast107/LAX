@@ -20,9 +20,16 @@ public class SignalRClientOperator : IEventOperator<string>
         Hub.On<string>(nameof(InvokeMethod.Receive), s => { OnReceiveOperation?.Invoke(s); });
     }
 
-    public async Task StartAsync() => await Hub.StartAsync();
+    public async Task StartAsync()
+    {
+        await Hub.StartAsync();
+        if (Hub.State == HubConnectionState.Connected)
+        {
+            await Register();
+        }
+    }
 
-    public async Task Register() => await Hub.InvokeAsync(nameof(InvokeMethod.Register), this);
+    private async Task Register() => await Hub.InvokeAsync(nameof(InvokeMethod.Register), this);
 
     public void Send(string ask)
     {

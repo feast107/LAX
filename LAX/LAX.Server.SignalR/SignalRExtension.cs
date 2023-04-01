@@ -17,12 +17,12 @@ namespace LAX.Server.SignalR
     public static class SignalRExtension
     {
         /// <summary>
-        /// Add AiController signalR
+        /// Add LAX signalR
         /// </summary>
         /// <param name="collection"></param>
         /// <param name="communicator"></param>
         /// <returns></returns>
-        public static IServiceCollection AddAiControllerSignalR(this IServiceCollection collection, Gpt35AsyncCommunicator communicator )
+        public static IServiceCollection AddLAXSignalR(this IServiceCollection collection, Gpt35AsyncCommunicator communicator)
         {
             collection
                 .AddSingleton<IAsyncCommunicator<ChatPrompt[]>>(communicator)
@@ -38,7 +38,7 @@ namespace LAX.Server.SignalR
         /// <param name="app"></param>
         /// <param name="pattern"></param>
         /// <returns></returns>
-        public static HubEndpointConventionBuilder MapAiControllerHub(this IEndpointRouteBuilder app,string pattern)
+        public static HubEndpointConventionBuilder MapLAXHub(this IEndpointRouteBuilder app,string pattern)
         {
             return app
                 .MapHub<MessageHub<Gpt35ClientOperator<DistributeMessageModel?>, DistributeMessageModel?>>(pattern);

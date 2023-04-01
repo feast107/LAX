@@ -37,7 +37,6 @@ namespace LAX.Desktop.Wpf
                 {
                     await op.StartAsync();
                     if (conn.State != HubConnectionState.Connected) return;
-                    await op.Register();
                     OnConnected?.Invoke(op);
                 }
                 catch

@@ -1,7 +1,7 @@
-using AiController.Communication.GPT35;
-using AiController.Server.SignalR;
+using LAX.Communication.GPT35;
+using LAX.Server.SignalR;
 
-namespace AiController.Server
+namespace LAX.Server
 {
     public class Program
     {
@@ -16,9 +16,8 @@ namespace AiController.Server
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddAiControllerSignalR(new Gpt35AsyncCommunicator()
+            builder.Services.AddLAXSignalR(new Gpt35AsyncCommunicator()
             {
-                
             });
 
             var app = builder.Build();
@@ -36,7 +35,7 @@ namespace AiController.Server
 
 
             app.MapControllers();
-            app.MapAiControllerHub("/server");
+            app.MapLAXHub("/server");
             app.Run();
         }
     }
