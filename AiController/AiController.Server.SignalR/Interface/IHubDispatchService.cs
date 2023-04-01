@@ -1,7 +1,7 @@
 ﻿using AiController.Abstraction.Operation;
 using Microsoft.AspNetCore.SignalR;
 
-namespace AiController.Server.Interface
+namespace AiController.Server.SignalR.Interface
 {
     public interface IHubDispatchService<in THub, in TOperator, TMessage> 
         where THub : Hub 

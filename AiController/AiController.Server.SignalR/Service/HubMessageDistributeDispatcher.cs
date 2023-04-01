@@ -3,9 +3,9 @@ using AiController.Operation.Operators;
 using AiController.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR;
 
-namespace AiController.Server.Service;
+namespace AiController.Server.SignalR.Service;
 
-public class HubMessageDistributeDispatcher<THub, TOperator, TDistributeMessageModel>
+internal class HubMessageDistributeDispatcher<THub, TOperator, TDistributeMessageModel>
     : HubMessageBaseDispatcher<THub, TOperator, TDistributeMessageModel>
     where THub : Hub
     where TOperator : IAsyncOperator<TDistributeMessageModel>, IProxied<IAsyncOperator<TDistributeMessageModel>>

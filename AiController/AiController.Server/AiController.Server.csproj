@@ -8,18 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="7.0.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AiController.Abstraction\AiController.Abstraction.csproj" />
-    <ProjectReference Include="..\AiController.Communication\AiController.Communication.csproj" />
-    <ProjectReference Include="..\AiController.Operation\AiController.Operation.csproj" />
-    <ProjectReference Include="..\AiController.Transmission\AiController.Transmission.csproj" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AiController.Server.SignalR\AiController.Server.SignalR.csproj" />
   </ItemGroup>
 
 </Project>

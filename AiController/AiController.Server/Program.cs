@@ -1,12 +1,5 @@
-using AiController.Abstraction.Communication;
 using AiController.Communication.GPT35;
-using AiController.Operation.Operators.Direct;
-using AiController.Operation.Operators.Indirect;
-using AiController.Server.Hubs;
-using AiController.Server.Interface;
-using AiController.Server.Service;
-using AiController.Transmission.SignalR;
-using OpenAI.Chat;
+using AiController.Server.SignalR;
 
 namespace AiController.Server
 {
@@ -22,14 +15,11 @@ namespace AiController.Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            //builder.Services.AddSingleton(typeof(IAsyncCommunicator<ChatPrompt[]>), typeof(Gpt35AsyncCommunicator));
-            builder.Services.AddSingleton<IAsyncCommunicator<ChatPrompt[]>>(new Gpt35AsyncCommunicator()
-            {
 
+            builder.Services.AddAiControllerSignalR(new Gpt35AsyncCommunicator()
+            {
+                
             });
-            builder.Services.AddSingleton(typeof(Gpt35DistributeAsyncOperator));
-            builder.Services.AddSingleton(typeof(IHubDispatchService<,>), typeof(HubMessageDispatcher<,>));
-            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
@@ -46,7 +36,7 @@ namespace AiController.Server
 
 
             app.MapControllers();
-            app.MapHub<MessageHub<Gpt35ClientOperator<DistributeMessageModel?>>>("/server");
+            app.MapAiControllerHub("/server");
             app.Run();
         }
     }
