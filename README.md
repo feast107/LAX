@@ -1,13 +1,13 @@
-# :globe_with_meridians: AiController
-AI control under distributed systems
+# :globe_with_meridians: LAX
+LAX (Language-based Ai Control System)
 
 # Demo
 ![](./doc/Example.png)
 
 # Run
-+ Build and run [`AiController.Server`](./AiController/AiController.Server/)
++ Build and run [`LAX.Server`](./LAX/LAX.Server/)
 
-+ Build and run [`AiController.Console`](./AiController/AiController.Console/)
++ Build and run [`LAX.Console`](./LAX/LAX.Console/)
 
 
 # Core
@@ -21,13 +21,13 @@ They may contains
 `Dynamic proxy` enable AI to intervene in every link.
 
 # Structure
-+ [`Abstraction`](./AiController/AiController.Abstraction/) Interfaces that define how to communicate and transform messages.
++ [`Abstraction`](./LAX/LAX.Abstraction/) Interfaces that define how to communicate and transform messages.
 + `Operation`
-  + [`Operation`](./AiController/AiController.Operation/) Implements of message transformations.
+  + [`Operation`](./LAX/LAX.Operation/) Implements of message transformations.
 + `Communication`
-  + [`Communication`](./AiController/AiController.Communication/) Implements of communication with AI.
+  + [`Communication`](./LAX/LAX.Communication/) Implements of communication with AI.
 + `Execution`
-  + [`Client`](./AiController/AiController.Client/) Client behaviors
-  + [`Console`](./AiController/AiController.Console/) Demo
-  + [`Desktop.Wpf`](./AiController/AiController.Desktop.Wpf/) Desktop
-  + [`Server`](./AiController/AiController.Server/) SignalR server
+  + [`Client`](./LAX/LAX.Client/) Client behaviors
+  + [`Console`](./LAX/LAX.Console/) Demo
+  + [`Desktop.Wpf`](./LAX/LAX.Desktop.Wpf/) Desktop
+  + [`Server`](./LAX/LAX.Server/) SignalR server
