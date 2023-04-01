@@ -53,21 +53,21 @@ namespace AiController.Operation.Operators.Direct
 
 
 
-    public class Gpt35DistributeAsyncOperator :
+    public class Gpt35DistributeAsyncOperator<TMessage> :
         Gpt35DistributeBasedOperator,
-        IExtensibleAsyncOperator<DistributeMessageModel?>
+        IExtensibleAsyncOperator<TMessage?>
     {
         public Gpt35DistributeAsyncOperator(IAsyncCommunicator<ChatPrompt[]> communicator) : base(communicator)
         { }
 
-        public Task<DistributeMessageModel?> SendAsync(string ask)
+        public Task<TMessage?> SendAsync(string ask)
         {
             return base.SendAsyncInternal(ask)
                 .ContinueWith(r =>
                     r.Result
                         .With($"ChatGPT Reply : {r.Result}")
                         .Ease()
-                        .Deserialize<DistributeMessageModel>());
+                        .Deserialize<TMessage>());
         }
     }
 

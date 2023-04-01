@@ -2,17 +2,18 @@
 using AiController.Server.Interface;
 using AiController.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR;
+using OpenAI.Chat;
 
 namespace AiController.Server.Hubs
 {
-    public class MessageHub<TOperator> : Hub
-        where TOperator : class, IAsyncOperator<DistributeMessageModel?>, IProxied<IAsyncOperator<DistributeMessageModel?>>, new()
+    public class MessageHub<TOperator, TMessage> : Hub
+        where TOperator : class, IAsyncOperator<TMessage?>, IProxied<IAsyncOperator<TMessage?>>, new()
     {
-        public MessageHub(IHubDispatchService<MessageHub<TOperator>, TOperator> service)
+        public MessageHub(IHubDispatchService<MessageHub<TOperator, TMessage>, TOperator, TMessage> service)
         {
             Service = service;
         }
-        public readonly IHubDispatchService<MessageHub<TOperator>, TOperator> Service;
+        public readonly IHubDispatchService<MessageHub<TOperator, TMessage>, TOperator, TMessage> Service;
 
         public override Task OnConnectedAsync()
         {
