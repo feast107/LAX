@@ -18,9 +18,7 @@ namespace AiController.Server
 
             builder.Services.AddAiControllerSignalR(new Gpt35AsyncCommunicator()
             {
-                ApiKey = "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",
-                ModelName = "gpt-3.5-turbo",
-                Temperature = 0
+                
             });
 
             var app = builder.Build();
