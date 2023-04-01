@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 
-namespace AiController.Transmission
+namespace LAX.Transmission
 {
     public static class ExampleBase<TReal>
     {

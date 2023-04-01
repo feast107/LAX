@@ -1,9 +1,9 @@
-﻿<Window x:Class="AiController.Desktop.Wpf.ConfigWindow"
+﻿<Window x:Class="LAX.Desktop.Wpf.ConfigWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AiController.Desktop.Wpf"
+        xmlns:local="clr-namespace:LAX.Desktop.Wpf"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
         Title="ConfigWindow" Height="300" Width="300">

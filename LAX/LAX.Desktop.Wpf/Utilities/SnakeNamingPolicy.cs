@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace AiController.Desktop.Wpf.Utilities
+namespace LAX.Desktop.Wpf.Utilities
 {
     public class SnakeCaseNamingPolicy : JsonNamingPolicy
     {

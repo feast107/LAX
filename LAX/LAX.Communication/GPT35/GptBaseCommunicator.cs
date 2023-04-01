@@ -1,7 +1,7 @@
 ﻿using OpenAI;
 using OpenAI.Chat;
 
-namespace AiController.Communication.GPT35
+namespace LAX.Communication.GPT35
 {
     public enum Role
     {

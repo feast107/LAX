@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AiController.Abstraction.Operation
+﻿namespace LAX.Abstraction.Operation
 {
     public interface IProxied<TProxy>
     {

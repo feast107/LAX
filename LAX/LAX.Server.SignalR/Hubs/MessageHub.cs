@@ -1,8 +1,8 @@
-﻿using AiController.Abstraction.Operation;
-using AiController.Server.SignalR.Interface;
+﻿using LAX.Abstraction.Operation;
+using LAX.Server.SignalR.Interface;
 using Microsoft.AspNetCore.SignalR;
 
-namespace AiController.Server.SignalR.Hubs
+namespace LAX.Server.SignalR.Hubs
 {
     internal class MessageHub<TOperator, TMessage> : Hub
         where TOperator : class, IAsyncOperator<TMessage>, IProxied<IAsyncOperator<TMessage>>, new()

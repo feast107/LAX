@@ -1,10 +1,7 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
+﻿using System.ComponentModel;
 using HandyControl.Data;
-using PropertyChanged;
 
-namespace AiController.Desktop.Wpf.ViewModels
+namespace LAX.Desktop.Wpf.ViewModels
 {
     public class ChatMessage : INotifyPropertyChanged
     {

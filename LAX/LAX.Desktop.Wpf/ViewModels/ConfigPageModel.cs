@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using AiController.Desktop.Wpf.Utilities;
+using LAX.Desktop.Wpf.Utilities;
 
-namespace AiController.Desktop.Wpf.ViewModels
+namespace LAX.Desktop.Wpf.ViewModels
 {
     public class ConfigPageModel : INotifyPropertyChanged
     {

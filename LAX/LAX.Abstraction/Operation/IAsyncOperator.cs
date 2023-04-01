@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace AiController.Abstraction.Operation;
+namespace LAX.Abstraction.Operation;
 
 public interface IAsyncOperator<TOperation> : IDescriptor
 {

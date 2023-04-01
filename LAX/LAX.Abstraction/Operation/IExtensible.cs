@@ -1,4 +1,4 @@
-﻿namespace AiController.Abstraction.Operation
+﻿namespace LAX.Abstraction.Operation
 {
     public interface IExtensible
     {

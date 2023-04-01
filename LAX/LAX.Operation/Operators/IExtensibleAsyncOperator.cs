@@ -1,6 +1,6 @@
-﻿using AiController.Abstraction.Operation;
+﻿using LAX.Abstraction.Operation;
 
-namespace AiController.Operation.Operators
+namespace LAX.Operation.Operators
 {
     public interface IExtensibleAsyncOperator<TOperation> : 
         IAsyncOperator<TOperation> ,

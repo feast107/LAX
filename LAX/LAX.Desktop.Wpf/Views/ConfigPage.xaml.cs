@@ -3,12 +3,12 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using AiController.Desktop.Wpf.Services;
-using AiController.Desktop.Wpf.Utilities;
-using AiController.Desktop.Wpf.ViewModels;
 using CommunityToolkit.Mvvm.Input;
+using LAX.Desktop.Wpf.Services;
+using LAX.Desktop.Wpf.Utilities;
+using LAX.Desktop.Wpf.ViewModels;
 
-namespace AiController.Desktop.Wpf.Views
+namespace LAX.Desktop.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for ConfigPage.xaml
@@ -49,15 +49,6 @@ namespace AiController.Desktop.Wpf.Views
         [RelayCommand]
         public void About()
         {
-            MessageBox.Show(Application.Current.MainWindow,
-                $"""
-                {nameof(AiController)}, by SlimeNull v{Assembly.GetEntryAssembly()?.GetName()?.Version}
-
-                A simple chat client based on OpenAI Chat completion API.
-
-                Repository: https://github.com//{nameof(AiController)}
-                """,
-                $"About {nameof(AiController)}", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void LoadSystemMessagesCore()

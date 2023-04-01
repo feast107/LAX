@@ -1,10 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using AiController.Desktop.Wpf.Services;
-using AiController.Desktop.Wpf.ViewModels;
 using CommunityToolkit.Mvvm.Input;
+using LAX.Desktop.Wpf.Services;
+using LAX.Desktop.Wpf.ViewModels;
 
-namespace AiController.Desktop.Wpf
+namespace LAX.Desktop.Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,7 +27,7 @@ namespace AiController.Desktop.Wpf
         public AppWindowModel ViewModel { get; }
         public NoteData NoteDataModel => NoteService.Data;
 
-        public void Navigate(object content) => appFrame.Navigate(content);
+        public void Navigate(object content) => AppFrame.Navigate(content);
 
 
         [RelayCommand]

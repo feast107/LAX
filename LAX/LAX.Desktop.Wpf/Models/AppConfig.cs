@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AiController.Desktop.Wpf.Models
+namespace LAX.Desktop.Wpf.Models
 {
     public class AppConfig : INotifyPropertyChanged
     {

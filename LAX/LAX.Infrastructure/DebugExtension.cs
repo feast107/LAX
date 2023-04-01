@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AiController.Infrastructure
+namespace LAX.Infrastructure
 {
     public static class DebugExtension
     {

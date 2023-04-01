@@ -1,4 +1,4 @@
-﻿namespace AiController.Transmission.SignalR
+﻿namespace LAX.Transmission.SignalR
 {
     public enum InvokeMethod
     {

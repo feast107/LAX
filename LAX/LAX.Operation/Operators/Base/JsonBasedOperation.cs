@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace AiController.Operation.Operators.Base
+namespace LAX.Operation.Operators.Base
 {
     public static class JsonBasedOperation
     {

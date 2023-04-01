@@ -1,9 +1,9 @@
-﻿using AiController.Abstraction.Operation;
-using AiController.Operation.Operators;
-using AiController.Transmission.SignalR;
+﻿using LAX.Abstraction.Operation;
+using LAX.Operation.Operators;
+using LAX.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR;
 
-namespace AiController.Server.SignalR.Service;
+namespace LAX.Server.SignalR.Service;
 
 internal class HubMessageDistributeDispatcher<THub, TOperator, TDistributeMessageModel>
     : HubMessageBaseDispatcher<THub, TOperator, TDistributeMessageModel>

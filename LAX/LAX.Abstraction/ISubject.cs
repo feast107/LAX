@@ -1,4 +1,4 @@
-﻿namespace AiController.Abstraction
+﻿namespace LAX.Abstraction
 {
     public interface ISubject
     {

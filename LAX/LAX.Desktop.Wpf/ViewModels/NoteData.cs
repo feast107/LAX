@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AiController.Desktop.Wpf.ViewModels
+namespace LAX.Desktop.Wpf.ViewModels
 {
     public class NoteData : INotifyPropertyChanged
     {

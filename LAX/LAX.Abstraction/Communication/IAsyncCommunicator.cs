@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace AiController.Abstraction.Communication;
+namespace LAX.Abstraction.Communication;
 
 public interface IAsyncCommunicator : IAsyncCommunicator<string> { }
 public interface IAsyncCommunicator<TMessage>

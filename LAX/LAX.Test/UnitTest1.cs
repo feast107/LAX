@@ -1,11 +1,11 @@
-using AiController.Abstraction.Communication;
-using AiController.Abstraction.Operation;
-using AiController.Communication.GPT35;
-using AiController.Operation.Operators.Direct;
-using AiController.Transmission.SignalR;
+using LAX.Abstraction.Communication;
+using LAX.Abstraction.Operation;
+using LAX.Communication.GPT35;
+using LAX.Operation.Operators.Direct;
+using LAX.Transmission.SignalR;
 using OpenAI.Chat;
 
-namespace AiController.Test
+namespace LAX.Test
 {
     public class Tests
     {
@@ -16,7 +16,7 @@ namespace AiController.Test
         {
             Communicator = new Gpt35AsyncCommunicator()
             {
-                
+               
             };
             Operator = new Gpt35DistributeAsyncOperator<DistributeMessageModel>(Communicator)
             {

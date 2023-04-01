@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AiController.Abstraction
+namespace LAX.Abstraction
 {
     public interface IExceptional
     {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace AiController.Desktop.Wpf.Utilities
+namespace LAX.Desktop.Wpf.Utilities
 {
     internal class JsonHelper
     {

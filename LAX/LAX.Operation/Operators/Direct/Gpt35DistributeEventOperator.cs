@@ -1,17 +1,17 @@
 ﻿using System;
-using AiController.Abstraction;
-using AiController.Abstraction.Communication;
-using AiController.Abstraction.Operation;
-using AiController.Infrastructure;
-using AiController.Operation.Operators.Base;
-using AiController.Transmission.SignalR;
-using OpenAI.Chat;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LAX.Abstraction;
+using LAX.Abstraction.Communication;
+using LAX.Abstraction.Operation;
+using LAX.Infrastructure;
+using LAX.Operation.Operators.Base;
+using LAX.Transmission.SignalR;
+using OpenAI.Chat;
 
-namespace AiController.Operation.Operators.Direct
+namespace LAX.Operation.Operators.Direct
 {
     public abstract class Gpt35DistributeBasedOperator :
         Gpt35BasedOperator,

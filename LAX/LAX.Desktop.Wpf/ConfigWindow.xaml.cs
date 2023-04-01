@@ -1,23 +1,11 @@
-﻿using AiController.Abstraction.Operation;
-using AiController.Client.SignalR;
+﻿using System.Windows;
 using HandyControl.Controls;
 using HandyControl.Data;
+using LAX.Abstraction.Operation;
+using LAX.Client.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace AiController.Desktop.Wpf
+namespace LAX.Desktop.Wpf
 {
     /// <summary>
     /// ConfigWindow.xaml 的交互逻辑

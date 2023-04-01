@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using OpenAI;
 using OpenAI.Chat;
 
-namespace AiController.Desktop.Wpf.Services
+namespace LAX.Desktop.Wpf.Services
 {
     public class ChatService
     {

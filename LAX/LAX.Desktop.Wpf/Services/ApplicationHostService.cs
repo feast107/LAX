@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AiController.Desktop.Wpf.Utilities;
-using AiController.Desktop.Wpf.Views;
+using LAX.Desktop.Wpf.Utilities;
+using LAX.Desktop.Wpf.Views;
 using Microsoft.Extensions.Hosting;
 
-namespace AiController.Desktop.Wpf.Services
+namespace LAX.Desktop.Wpf.Services
 {
     internal class ApplicationHostService : IHostedService
     {

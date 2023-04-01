@@ -1,9 +1,9 @@
-﻿using AiController.Abstraction.Communication;
-using AiController.Abstraction.Operation;
-using AiController.Operation.Operators.Base;
+﻿using LAX.Abstraction.Communication;
+using LAX.Abstraction.Operation;
+using LAX.Operation.Operators.Base;
 using OpenAI.Chat;
 
-namespace AiController.Operation.Operators.Direct
+namespace LAX.Operation.Operators.Direct
 {
     public class Gpt35DirectOperator : Gpt35BasedOperator , IEventOperator<string>
     {

@@ -1,8 +1,8 @@
-﻿using AiController.Abstraction.Operation;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using LAX.Abstraction.Operation;
 
-namespace AiController.Operation.Operators.Indirect
+namespace LAX.Operation.Operators.Indirect
 {
     public class Gpt35ClientOperator<TMessage>
         : IAsyncOperator<TMessage>, IProxied<IAsyncOperator<TMessage>>

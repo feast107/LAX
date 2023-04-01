@@ -1,10 +1,10 @@
-﻿using AiController.Abstraction;
-using AiController.Abstraction.Communication;
-using AiController.Communication.GPT35;
+﻿using System.Threading.Tasks;
+using LAX.Abstraction;
+using LAX.Abstraction.Communication;
+using LAX.Communication.GPT35;
 using OpenAI.Chat;
-using System.Threading.Tasks;
 
-namespace AiController.Operation.Operators.Base;
+namespace LAX.Operation.Operators.Base;
 
 public abstract class Gpt35BasedOperator : IDescriptor 
 {

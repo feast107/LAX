@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace AiController.Desktop.Wpf.Services
+namespace LAX.Desktop.Wpf.Services
 {
     public class PageService
     {

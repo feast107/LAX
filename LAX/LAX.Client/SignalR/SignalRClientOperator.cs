@@ -1,9 +1,9 @@
-﻿using AiController.Abstraction.Operation;
-using AiController.Transmission.SignalR;
+﻿using System.Text.Json.Serialization;
+using LAX.Abstraction.Operation;
+using LAX.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
-using System.Text.Json.Serialization;
 
-namespace AiController.Client.SignalR;
+namespace LAX.Client.SignalR;
 
 public class SignalRClientOperator : IEventOperator<string>
 {

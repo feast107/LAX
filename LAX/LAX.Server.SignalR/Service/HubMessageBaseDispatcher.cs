@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using AiController.Abstraction.Operation;
-using AiController.Operation.Operators;
-using AiController.Server.SignalR.Interface;
+using LAX.Abstraction.Operation;
+using LAX.Operation.Operators;
+using LAX.Server.SignalR.Interface;
 using Microsoft.AspNetCore.SignalR;
 
-namespace AiController.Server.SignalR.Service;
+namespace LAX.Server.SignalR.Service;
 
 public abstract class HubMessageBaseDispatcher<THub, TOperator, TMessage>
     : IHubDispatchService<THub, TOperator, TMessage>

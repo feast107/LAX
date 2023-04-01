@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using AiController.Desktop.Wpf.ViewModels;
+using LAX.Desktop.Wpf.ViewModels;
 
-namespace AiController.Desktop.Wpf.Services
+namespace LAX.Desktop.Wpf.Services
 {
     public class NoteService
     {

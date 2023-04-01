@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace AiController.Desktop.Wpf.Services
+namespace LAX.Desktop.Wpf.Services
 {
     public class SmoothScrollingService
     {

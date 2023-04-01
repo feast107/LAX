@@ -1,19 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using AiController.Abstraction.Operation;
-using AiController.Desktop.Wpf.Services;
-using AiController.Desktop.Wpf.ViewModels;
 using CommunityToolkit.Mvvm.Input;
-using HandyControl.Controls;
 using HandyControl.Data;
-using HandyControl.Tools;
-using HandyControl.Tools.Extension;
+using LAX.Abstraction.Operation;
+using LAX.Desktop.Wpf.Services;
+using LAX.Desktop.Wpf.ViewModels;
 using ScrollViewer = System.Windows.Controls.ScrollViewer;
-using Window = HandyControl.Controls.Window;
 
-namespace AiController.Desktop.Wpf.Views
+namespace LAX.Desktop.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for MainPage.xaml

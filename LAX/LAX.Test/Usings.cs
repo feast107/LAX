@@ -1,5 +1,3 @@
 global using NUnit.Framework;
-global using AiController.Communication;
-global using AiController.Operation;
-global using AiController.Server;
-global using AiController.Transmission;
+global using LAX.Communication;
+global using LAX.Operation;

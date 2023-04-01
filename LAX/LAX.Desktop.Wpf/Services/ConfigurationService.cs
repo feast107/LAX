@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Text.Json;
-using AiController.Desktop.Wpf.Models;
-using AiController.Desktop.Wpf.Utilities;
+using LAX.Desktop.Wpf.Models;
+using LAX.Desktop.Wpf.Utilities;
 using Microsoft.Extensions.Options;
 
-namespace AiController.Desktop.Wpf.Services
+namespace LAX.Desktop.Wpf.Services
 {
     public class ConfigurationService
     {

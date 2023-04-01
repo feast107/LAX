@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
-using AiController.Abstraction;
+using LAX.Abstraction;
 
-namespace AiController.Transmission.SignalR
+namespace LAX.Transmission.SignalR
 {
     public class DistributeMessageModel : IExceptional
     {

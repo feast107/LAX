@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using AiController.Abstraction.Communication;
+using LAX.Abstraction.Communication;
 using OpenAI.Chat;
 
-namespace AiController.Communication.GPT35
+namespace LAX.Communication.GPT35
 {
     public class Gpt35StreamCommunicator : GptBaseCommunicator, IStreamCommunicator<ChatPrompt[]>
     {

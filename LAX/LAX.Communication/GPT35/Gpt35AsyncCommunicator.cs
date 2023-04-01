@@ -1,9 +1,9 @@
-﻿using OpenAI.Chat;
-using System.Text;
-using AiController.Abstraction.Communication;
-using AiController.Infrastructure;
+﻿using System.Text;
+using LAX.Abstraction.Communication;
+using LAX.Infrastructure;
+using OpenAI.Chat;
 
-namespace AiController.Communication.GPT35
+namespace LAX.Communication.GPT35
 {
     public class Gpt35AsyncCommunicator : GptBaseCommunicator, IAsyncCommunicator<ChatPrompt[]>
     {

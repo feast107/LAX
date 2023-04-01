@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AiController.Desktop.Wpf.Utilities
+namespace LAX.Desktop.Wpf.Utilities
 {
     public class ValueWrapper<T> : INotifyPropertyChanged
     {

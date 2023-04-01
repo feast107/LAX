@@ -1,4 +1,4 @@
-﻿namespace AiController.Abstraction.Communication;
+﻿namespace LAX.Abstraction.Communication;
 
 public interface ICommunicator : ICommunicator<string> { }
 public interface ICommunicator<TMessage>

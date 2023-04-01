@@ -1,7 +1,7 @@
-﻿<Application x:Class="AiController.Desktop.Wpf.App"
+﻿<Application x:Class="LAX.Desktop.Wpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AiController.Desktop.Wpf">
+             xmlns:local="clr-namespace:LAX.Desktop.Wpf">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

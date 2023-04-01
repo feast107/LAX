@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.CommandLine;
-using System.CommandLine.Builder;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.CommandLine;
 
-namespace AiController.Test
+namespace LAX.Test
 {
     internal class CommandTest
     {

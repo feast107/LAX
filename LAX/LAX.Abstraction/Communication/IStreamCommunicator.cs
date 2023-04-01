@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace AiController.Abstraction.Communication;
+namespace LAX.Abstraction.Communication;
 
 public interface IStreamCommunicator : IStreamCommunicator<string> { }
 public interface IStreamCommunicator<TMessage>

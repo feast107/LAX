@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Windows;
-using AiController.Abstraction.Operation;
-using AiController.Client.SignalR;
-using AiController.Desktop.Wpf.Models;
-using AiController.Desktop.Wpf.Services;
-using AiController.Desktop.Wpf.Utilities;
-using AiController.Desktop.Wpf.ViewModels;
-using AiController.Desktop.Wpf.Views;
-using Microsoft.AspNetCore.SignalR.Client;
+using LAX.Desktop.Wpf.Models;
+using LAX.Desktop.Wpf.Services;
+using LAX.Desktop.Wpf.Utilities;
+using LAX.Desktop.Wpf.ViewModels;
+using LAX.Desktop.Wpf.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace AiController.Desktop.Wpf
+namespace LAX.Desktop.Wpf
 {
     /// <summary>
     /// Interaction logic for App.xaml

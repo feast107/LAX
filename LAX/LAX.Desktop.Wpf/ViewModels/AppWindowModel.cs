@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
-using AiController.Desktop.Wpf.Models;
-using AiController.Desktop.Wpf.Services;
+using LAX.Desktop.Wpf.Models;
+using LAX.Desktop.Wpf.Services;
 
-namespace AiController.Desktop.Wpf.ViewModels
+namespace LAX.Desktop.Wpf.ViewModels
 {
     public class AppWindowModel : INotifyPropertyChanged
     {

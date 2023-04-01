@@ -1,18 +1,18 @@
-﻿using AiController.Abstraction.Communication;
-using AiController.Communication.GPT35;
-using AiController.Operation.Operators;
-using AiController.Operation.Operators.Direct;
-using AiController.Operation.Operators.Indirect;
-using AiController.Server.SignalR.Hubs;
-using AiController.Server.SignalR.Interface;
-using AiController.Server.SignalR.Service;
-using AiController.Transmission.SignalR;
+﻿using LAX.Abstraction.Communication;
+using LAX.Communication.GPT35;
+using LAX.Operation.Operators;
+using LAX.Operation.Operators.Direct;
+using LAX.Operation.Operators.Indirect;
+using LAX.Server.SignalR.Hubs;
+using LAX.Server.SignalR.Interface;
+using LAX.Server.SignalR.Service;
+using LAX.Transmission.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using OpenAI.Chat;
 
-namespace AiController.Server.SignalR
+namespace LAX.Server.SignalR
 {
     public static class SignalRExtension
     {
