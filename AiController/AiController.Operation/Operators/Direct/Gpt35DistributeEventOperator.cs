@@ -1,4 +1,5 @@
-﻿using AiController.Abstraction;
+﻿using System;
+using AiController.Abstraction;
 using AiController.Abstraction.Communication;
 using AiController.Abstraction.Operation;
 using AiController.Infrastructure;
@@ -29,26 +30,25 @@ namespace AiController.Operation.Operators.Direct
             Next, the client initiates the request，You must reply strictly in JSON format，for example：{DistributeMessageModel.Example}，
             You must explicitly label the devices referred to below and fill in the JSON fields :'{nameof(DistributeMessageModel.device)}' and this is indispensable,
             Then fill in the content of the reply client according to the client's requirements in the JSON fields :'{nameof(DistributeMessageModel.reply)}' whether you have any doubts about it or not，
-            In any case, it is forbidden to reply to content other than JSON format
+            In any case, it is forbidden to reply to content other than JSON format,
+            If you have any uncertainties, you must also strictly use the JSON format to express them, for example：{DistributeMessageModel.Example}
             """;
             set { }
         }
 
-        protected override Task<string> SendAsyncInternal(string ask)
-        {
-            return base.SendAsyncInternal(ToMessage(ask));
-        }
-
         protected readonly List<IDescriptor> Clients = new();
-        public void Add(IDescriptor descriptor) => Clients.With(
-            $"new Descriptor {descriptor}",
-            $"Descriptor count: {Clients.Count + 1}").Add(descriptor);
 
-        public void Remove(IDescriptor descriptor) => Clients.Remove(descriptor).With($"Descriptor count: {Clients.Count}");
-        public string ToMessage(string origin)
-        {
-            return  $"The next message comes from the client：\n" + origin;
-        }
+        public void Add(IDescriptor descriptor) =>
+            Clients
+                .With($"Descriptor [{descriptor}] joined",
+                    $"Descriptors : [{Clients.Count + 1}] in total")
+                .Add(descriptor);
+
+        public void Remove(IDescriptor descriptor) =>
+            Clients
+                .Remove(descriptor)
+                .With($"Descriptor [{descriptor}] leaved" +
+                      $"Descriptors : [{Clients.Count + 1}] in total");
     }
 
 
@@ -56,6 +56,7 @@ namespace AiController.Operation.Operators.Direct
     public class Gpt35DistributeAsyncOperator<TMessage> :
         Gpt35DistributeBasedOperator,
         IExtensibleAsyncOperator<TMessage?>
+        where TMessage : IExceptional , new()
     {
         public Gpt35DistributeAsyncOperator(IAsyncCommunicator<ChatPrompt[]> communicator) : base(communicator)
         { }
@@ -64,10 +65,18 @@ namespace AiController.Operation.Operators.Direct
         {
             return base.SendAsyncInternal(ask)
                 .ContinueWith(r =>
-                    r.Result
-                        .With($"ChatGPT Reply : {r.Result}")
-                        .Ease()
-                        .Deserialize<TMessage>());
+                {
+                    var res = r.Result.With($"ChatGPT Reply : {r.Result}");
+                    try
+                    {
+                        var ret = res.Deserialize<TMessage>();
+                        return ret;
+                    }
+                    catch (Exception e)
+                    {
+                        return new TMessage { Exception = e }.WithError($"ChatGPT Exception : {e}");
+                    }
+                });
         }
     }
 

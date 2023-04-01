@@ -3,16 +3,18 @@ using AiController.Abstraction;
 
 namespace AiController.Transmission.SignalR
 {
-    public class DistributeMessageModel 
+    public class DistributeMessageModel : IExceptional
     {
         [Description("")]
         public string? device { get; set; }
-        public string? reply { get; set; }
+        public object? reply { get; set; }
 
-        public static string Example { get; } = JsonSerializer.Serialize(new DistributeMessageModel()
+        public static string Example { get; } = JsonSerializer.Serialize(new DistributeMessageModel
         {
             device = "deviceId",
-            reply = "this is the reply of message"
+            reply = "I have something uncertain"
         });
+
+        public Exception? Exception { get; set; }
     }
 }

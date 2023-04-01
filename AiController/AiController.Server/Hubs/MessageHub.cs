@@ -1,13 +1,11 @@
 ﻿using AiController.Abstraction.Operation;
 using AiController.Server.Interface;
-using AiController.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR;
-using OpenAI.Chat;
 
 namespace AiController.Server.Hubs
 {
     public class MessageHub<TOperator, TMessage> : Hub
-        where TOperator : class, IAsyncOperator<TMessage?>, IProxied<IAsyncOperator<TMessage?>>, new()
+        where TOperator : class, IAsyncOperator<TMessage>, IProxied<IAsyncOperator<TMessage>>, new()
     {
         public MessageHub(IHubDispatchService<MessageHub<TOperator, TMessage>, TOperator, TMessage> service)
         {

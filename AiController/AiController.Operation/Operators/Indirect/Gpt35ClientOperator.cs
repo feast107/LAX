@@ -11,10 +11,16 @@ namespace AiController.Operation.Operators.Indirect
 
         public Task<TMessage> SendAsync(string ask)
         {
-            return Proxy.SendAsync($"{Identifier} \n{ask}");
+            return Proxy.SendAsync($"This is client：{Identifier} \n" +
+                                   $"My request is :{ask}");
         }
 
         public string? Identifier { get; init; }
         public string? Description { get; set; }
+
+        public override string ToString()
+        {
+            return Identifier ?? "Anonymous";
+        }
     }
 }

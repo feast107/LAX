@@ -1,5 +1,4 @@
 ﻿using AiController.Abstraction.Operation;
-using AiController.Infrastructure;
 using AiController.Operation.Operators;
 using AiController.Server.Interface;
 using Microsoft.AspNetCore.SignalR;
@@ -16,6 +15,8 @@ namespace AiController.Server.Service
         {
             AsyncOperator = asyncOperator;
         }
+        private IExtensibleAsyncOperator<TMessage> AsyncOperator { get; }
+        private Task<TMessage>? CurrentRequest { get; set; }
 
         private readonly Dictionary<string, Tuple<TOperator, THub>> connectedHubs = new();
 
@@ -27,16 +28,12 @@ namespace AiController.Server.Service
                 .Where(pair => 
                     pair.Value.Item1.Identifier.Trim() == identifier);
 
-
-        protected IExtensibleAsyncOperator<TMessage> AsyncOperator { get; }
-
-        private Task<TMessage>? CurrentRequest { get; set; }
-
         protected Task<TMessage> Run(Func<TMessage> request)
         {
-            return CurrentRequest = CurrentRequest == null
-                ? Task.Run(request)
+            CurrentRequest = CurrentRequest == null 
+                ? Task.Run(request) 
                 : CurrentRequest.ContinueWith(t => request());
+            return CurrentRequest;
         }
 
         public void OnHubDisconnect(string connectionId)
@@ -45,7 +42,6 @@ namespace AiController.Server.Service
             AsyncOperator.Remove(field.Item1);
             connectedHubs.Remove(connectionId);
         }
-        public abstract Task OnReceiveMessage(THub hub, string message);
         public bool OnRegister(THub hub, TOperator identifier)
         {
             identifier.Proxy = AsyncOperator;
@@ -55,7 +51,8 @@ namespace AiController.Server.Service
             }
             connectedHubs[hub.Context.ConnectionId] = new(identifier, hub);
             AsyncOperator.Add(identifier);
-            return true.With(connectedHubs.Count);
+            return true;
         }
+        public abstract Task OnReceiveMessage(THub hub, string message);
     }
 }
