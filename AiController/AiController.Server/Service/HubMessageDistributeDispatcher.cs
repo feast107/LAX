@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.SignalR;
 namespace AiController.Server.Service;
 
 public class
-    HubMessageDistributeDispatcher<THub, TOperator, _>
-    : HubMessageBaseDispatcher<THub, TOperator, DistributeMessageModel>
+    HubMessageDistributeDispatcher<THub, TOperator, TDistributeMessageModel>
+    : HubMessageBaseDispatcher<THub, TOperator, TDistributeMessageModel>
     where THub : Hub
-    where TOperator : IAsyncOperator<DistributeMessageModel>, IProxied<IAsyncOperator<DistributeMessageModel>>
-    where _ : DistributeMessageModel
+    where TOperator : IAsyncOperator<TDistributeMessageModel>, IProxied<IAsyncOperator<TDistributeMessageModel>>
+    where TDistributeMessageModel : DistributeMessageModel
 {
-    public HubMessageDistributeDispatcher(IExtensibleAsyncOperator<DistributeMessageModel> asyncOperator) 
+    public HubMessageDistributeDispatcher(IExtensibleAsyncOperator<TDistributeMessageModel> asyncOperator) 
         : base(asyncOperator) { }
     
     public override async Task OnReceiveMessage(THub hub, string message)
