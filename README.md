@@ -2,7 +2,7 @@
 AI control under distributed systems
 
 # Demo
-![](./doc/Demo.gif)
+![](./doc/Example.png)
 
 # Run
 + Build and run [`AiController.Server`](./AiController/AiController.Server/)
