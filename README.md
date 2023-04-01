@@ -1,5 +1,5 @@
 # :globe_with_meridians: LAX
-LAX (Language-based Ai Communicate System)
+LAX (Language-based Ai Communication System)
 
 # Demo
 ![](./doc/Example.png)
