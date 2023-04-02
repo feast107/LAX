@@ -11,8 +11,8 @@ namespace LAX.Test
     public class Tests
     {
         private IAsyncCommunicator<ChatPrompt[]> Communicator { get; set; }
-        private IExtensibleAsyncOperator<DistributeMessageModel?> Server { get; set; }
-        private Gpt35ClientOperator<DistributeMessageModel?> Client { get; set; }
+        private IExtensibleAsyncOperator<DistributeMessageListModel?> Server { get; set; }
+        private Gpt35ClientOperator<DistributeMessageListModel?> Client { get; set; }
 
         [SetUp]
         public void Setup()
@@ -22,14 +22,19 @@ namespace LAX.Test
                Temperature = 0,
                ModelName = "gpt-3.5-turbo"
             };
-            Server = new Gpt35DistributeAsyncOperator<DistributeMessageModel>(Communicator)
+            Server = new Gpt35DistributeAsyncOperator<DistributeMessageListModel>(Communicator)
             {
-                Identifier = "You are center server :[Server]",
+                Identifier = "You are center server : [Server]",
             };
-            Server.Add(Client = new Gpt35ClientOperator<DistributeMessageModel?>()
+            Server.Add(Client = new Gpt35ClientOperator<DistributeMessageListModel?>()
             {
                 Identifier = "Client1",
                 Description = "This is my client"
+            });
+            Server.Add(new Gpt35ClientOperator<DistributeMessageListModel?>()
+            {
+                Identifier = "Central unit",
+                Description = "This is Central unit"
             });
             Client.Proxy = Server;
         }
@@ -37,7 +42,7 @@ namespace LAX.Test
         [Test]
         public async Task Test1()
         {
-            var clientMessage = "Õë¶ÔÕâ¶ÎÒªÇóµÄ»Ø¸´£¬Çë×ª»»³É¼ò¶ÌµÄÃüÁîÐÐ \"ÔÚÁíÒ»Ì¨Éè±¸ÖÐµÄ d:MyDir Ä¿Â¼ÏÂ´´½¨Ò»¸öÃûÎªAccessµÄÄ¿Â¼\" ";
+            var clientMessage = "ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ðµï¿½ï¿½è±¸ï¿½ï¿½ï¿½Í¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½'Error , SOS'";
             try
             {
                 var res = await Client.SendAsync(clientMessage);
