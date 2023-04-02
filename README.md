@@ -9,7 +9,7 @@
 ![](./doc/Example.png)
 
 # Usage
-### Latest publish [Release beta v0.1.0](../releases/tag/beta)
+### Latest publish [Release beta v0.1.0](https://github.com/feast107/LAX/releases/tag/beta)
 
 + using `LAX.Server.SignalR` with Dependency injection
   ``` csharp
