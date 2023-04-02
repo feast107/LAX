@@ -22,13 +22,20 @@
   });
 
   ...
-  
+
   WebApplication app;
   app.MapLAXHub("/pattern");
   ```
 + using `LAX.Client` of signalR client
   ``` csharp
-  ILAXClient client = new LAXSignalRClient(url);
+  ILAXClient client = new LAXSignalRClient(url)
+  {
+      Identifier = "Your Identifier",
+      Description = "Describe your self"
+  };
+  client.OnReceiveOperation += reply => { OnReceive(reply); };
+  await client.StartAsync();
+  client.Send(message);
   ```
 
 # Core
