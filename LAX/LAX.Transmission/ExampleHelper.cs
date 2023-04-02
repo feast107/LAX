@@ -24,7 +24,5 @@ namespace LAX.Transmission
                 }
                 return sb.Append(str);
             }).ToString();
-
-        
     }
 }

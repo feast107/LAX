@@ -23,9 +23,14 @@ public abstract class HubMessageBaseDispatcher<THub, TOperator, TMessage>
     protected bool TryGetHubByConnectionId(string connectionId, [MaybeNullWhen(false)] out Tuple<TOperator, THub> value) =>
         connectedHubs.TryGetValue(connectionId, out value);
 
-    protected IEnumerable<KeyValuePair<string,Tuple<TOperator,THub>>> GetHubByIdentifier(string identifier) => 
+    protected IEnumerable<KeyValuePair<string,Tuple<TOperator,THub>>> GetHubsByIdentifier(string identifier) => 
         connectedHubs
             .Where(pair => 
+                pair.Value.Item1.Identifier.Trim() == identifier);
+
+    protected KeyValuePair<string, Tuple<TOperator, THub>>? GetHubByIdentifier(string identifier) =>
+        connectedHubs
+            .FirstOrDefault(pair =>
                 pair.Value.Item1.Identifier.Trim() == identifier);
 
     protected Task<TMessage> Run(Func<TMessage> request)

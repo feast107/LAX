@@ -27,7 +27,7 @@ internal class HubMessageDistributeDispatcher<THub, TOperator, TDistributeMessag
             if (task.Result.Exception != null) return;
             if (task.Result?.Device == null) return;
             Console.WriteLine(task.Result);
-            foreach (var pair in GetHubByIdentifier(task.Result.Device.Trim()))
+            foreach (var pair in GetHubsByIdentifier(task.Result.Device.Trim()))
             {
                 hub.Clients
                     .Client(pair.Key)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace LAX.Infrastructure
 {
@@ -22,7 +23,19 @@ namespace LAX.Infrastructure
         /// </summary>
         /// <param name="json"></param>
         /// <returns></returns>
-        public static string Ease(this string json) => json.Trim().Length == 0 ? "{}" : json;
+        public static string Ease(this string json)
+        {
+            if (json.Trim().Length != 0)
+            {
+                var start = json.IndexOf('{');
+                var end = json.LastIndexOf('}');
+                if (end > start && start >= 0)
+                {
+                    return json[start..(end + 1)];
+                }
+            }
+            return "{}";
+        }
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {

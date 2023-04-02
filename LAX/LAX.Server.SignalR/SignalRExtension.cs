@@ -27,7 +27,7 @@ namespace LAX.Server.SignalR
             collection
                 .AddSingleton<IAsyncCommunicator<ChatPrompt[]>>(communicator)
                 .AddSingleton(typeof(IExtensibleAsyncOperator<>), typeof(Gpt35DistributeAsyncOperator<>))
-                .AddSingleton(typeof(IHubDispatchService<,,>), typeof(HubMessageDistributeDispatcher<,,>))
+                .AddSingleton(typeof(IHubDispatchService<,,>), typeof(HubMessageMultiDistributeDispatcher<,,>))
                 .AddSignalR();
             return collection;
         }
@@ -41,7 +41,7 @@ namespace LAX.Server.SignalR
         public static HubEndpointConventionBuilder MapLAXHub(this IEndpointRouteBuilder app,string pattern)
         {
             return app
-                .MapHub<MessageHub<Gpt35ClientOperator<DistributeMessageModel?>, DistributeMessageModel?>>(pattern);
+                .MapHub<MessageHub<Gpt35ClientOperator<DistributeMessageListModel?>, DistributeMessageListModel?>>(pattern);
         }
     }
 }

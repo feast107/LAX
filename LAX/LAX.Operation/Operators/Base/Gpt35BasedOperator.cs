@@ -9,8 +9,8 @@ namespace LAX.Operation.Operators.Base;
 public abstract class Gpt35BasedOperator : IDescriptor 
 {
     public abstract string Description { get; set; }
-    public required string Identifier { get; init; } = "You are a savvy central server: [Central]," +
-                                                       "Responsible for scheduling client messages";
+    public virtual string Identifier { get; init; } = "You are a savvy central server: [Central]," +
+                                                                "Responsible for scheduling client messages and And forever reply to messages in JSON format";
 
     protected Gpt35BasedOperator(IAsyncCommunicator<ChatPrompt[]> communicator)
     {
@@ -23,7 +23,7 @@ public abstract class Gpt35BasedOperator : IDescriptor
         return Communicator.SendAsync(
             new [] {
                 Identifier.ToChatPrompt(Role.system),
-                Description.ToChatPrompt(Role.system),
+                Description.ToChatPrompt(Role.assistant),
                 ask.ToChatPrompt()
             });
     }

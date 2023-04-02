@@ -10,9 +10,9 @@ namespace LAX.Test
 {
     public class Tests
     {
-        private IAsyncCommunicator<ChatPrompt[]> Communicator { get; set; }
-        private IExtensibleAsyncOperator<DistributeMessageListModel?> Server { get; set; }
-        private Gpt35ClientOperator<DistributeMessageListModel?> Client { get; set; }
+        private IAsyncCommunicator<ChatPrompt[]> Communicator { get; set; } = null!;
+        private IExtensibleAsyncOperator<DistributeMessageListModel?> Server { get; set; } = null!;
+        private Gpt35ClientOperator<DistributeMessageListModel?> Client { get; set; } = null!;
 
         [SetUp]
         public void Setup()
@@ -24,7 +24,6 @@ namespace LAX.Test
             };
             Server = new Gpt35DistributeAsyncOperator<DistributeMessageListModel>(Communicator)
             {
-                Identifier = "You are center server : [Server]",
             };
             Server.Add(Client = new Gpt35ClientOperator<DistributeMessageListModel?>()
             {
@@ -33,8 +32,8 @@ namespace LAX.Test
             });
             Server.Add(new Gpt35ClientOperator<DistributeMessageListModel?>()
             {
-                Identifier = "Central unit",
-                Description = "This is Central unit"
+                Identifier = "Unit unit",
+                Description = "This is unit"
             });
             Client.Proxy = Server;
         }
@@ -42,7 +41,7 @@ namespace LAX.Test
         [Test]
         public async Task Test1()
         {
-            var clientMessage = "�����ǰ���е��豸���;�����Ϣ��'Error , SOS'";
+            var clientMessage = "�����ǰ���еĿͻ��˷��;�����Ϣ��'Error , SOS'";
             try
             {
                 var res = await Client.SendAsync(clientMessage);
