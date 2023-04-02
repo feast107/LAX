@@ -1,5 +1,6 @@
 ﻿using LAX.Abstraction.Operation;
-using LAX.Server.SignalR.Interface;
+using LAX.Server.SignalR.Interfaces;
+using LAX.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR;
 
 namespace LAX.Server.SignalR.Hubs
@@ -27,7 +28,7 @@ namespace LAX.Server.SignalR.Hubs
         public async Task Register(TOperator message) =>
             await Clients
             .Caller
-            .SendAsync(nameof(Register),
+            .SendAsync(nameof(InvokeMethod.Register),
                 Service.OnRegister(this, message));
 
         public async Task Send(string message) => await Service.OnReceiveMessage(this, message);

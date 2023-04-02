@@ -8,7 +8,8 @@ using LAX.Abstraction.Communication;
 using LAX.Abstraction.Operation;
 using LAX.Infrastructure;
 using LAX.Operation.Operators.Base;
-using LAX.Transmission.SignalR;
+using LAX.Transmission;
+using LAX.Transmission.Json;
 using OpenAI.Chat;
 
 namespace LAX.Operation.Operators.Direct
@@ -21,17 +22,17 @@ namespace LAX.Operation.Operators.Direct
 
         public override string Description
         {
-            get => $"""
+            get => Clients.Count == 0
+                ? string.Empty
+                : $"""
             Now we have {Clients.Count} device/s named [{Clients.Aggregate(new StringBuilder(), (sb, c) => sb.Append(',' + c.Identifier)).ToString()[1..]}] 。
             A self-description for each device follows：
             [{Clients.Aggregate(new StringBuilder(), (sb, c) => sb.AppendLine(
                 $"{{ name：{c.Identifier},\n description：{c.Description} }},\n"
             ))}]
-            Next, the client initiates the request，You must reply strictly in JSON format，for example：{DistributeMessageModel.Example}，
-            You must explicitly label the devices referred to below and fill in the JSON fields :'{nameof(DistributeMessageModel.device)}' and this is indispensable,
-            Then fill in the content of the reply client according to the client's requirements in the JSON fields :'{nameof(DistributeMessageModel.reply)}' whether you have any doubts about it or not，
+            Next, the client initiates the request，You must reply strictly in JSON format，for example：{ExampleHelper<DistributeMessageListModel>.ForExample}，
             In any case, it is forbidden to reply to content other than JSON format,
-            If you have any uncertainties, you must also strictly use the JSON format to express them, for example：{DistributeMessageModel.Example}
+            If you have any uncertainties, you must also strictly use the JSON format to express them.
             """;
             set { }
         }
@@ -63,7 +64,8 @@ namespace LAX.Operation.Operators.Direct
 
         public Task<TMessage?> SendAsync(string ask)
         {
-            return base.SendAsyncInternal(ask)
+            return 
+                base.SendAsyncInternal(ask)
                 .ContinueWith(r =>
                 {
                     var res = r.Result.With($"ChatGPT Reply : {r.Result}");

@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using LAX.Abstraction.Operation;
+using LAX.Transmission.Json;
 using LAX.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 

@@ -1,9 +1,10 @@
 ﻿using LAX.Abstraction.Operation;
 using LAX.Operation.Operators;
-using LAX.Transmission.SignalR;
+using LAX.Transmission.Json;
 using Microsoft.AspNetCore.SignalR;
+using InvokeMethod = LAX.Transmission.SignalR.InvokeMethod;
 
-namespace LAX.Server.SignalR.Service;
+namespace LAX.Server.SignalR.Services;
 
 internal class HubMessageDistributeDispatcher<THub, TOperator, TDistributeMessageModel>
     : HubMessageBaseDispatcher<THub, TOperator, TDistributeMessageModel>
@@ -24,13 +25,13 @@ internal class HubMessageDistributeDispatcher<THub, TOperator, TDistributeMessag
             ).ContinueWith(task =>
         {
             if (task.Result.Exception != null) return;
-            if (task.Result?.device == null) return;
+            if (task.Result?.Device == null) return;
             Console.WriteLine(task.Result);
-            foreach (var pair in GetHubByIdentifier(task.Result.device.Trim()))
+            foreach (var pair in GetHubByIdentifier(task.Result.Device.Trim()))
             {
                 hub.Clients
                     .Client(pair.Key)
-                    .SendAsync(nameof(InvokeMethod.Receive), task.Result.reply);
+                    .SendAsync(nameof(InvokeMethod.Receive), task.Result.Reply);
             }
         });
     }

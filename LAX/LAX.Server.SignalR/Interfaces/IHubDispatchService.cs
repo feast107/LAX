@@ -1,7 +1,7 @@
 ﻿using LAX.Abstraction.Operation;
 using Microsoft.AspNetCore.SignalR;
 
-namespace LAX.Server.SignalR.Interface
+namespace LAX.Server.SignalR.Interfaces
 {
     public interface IHubDispatchService<in THub, in TOperator, TMessage> 
         where THub : Hub 

@@ -1,8 +1,9 @@
 using LAX.Abstraction.Communication;
-using LAX.Abstraction.Operation;
 using LAX.Communication.GPT35;
+using LAX.Operation.Operators;
 using LAX.Operation.Operators.Direct;
-using LAX.Transmission.SignalR;
+using LAX.Operation.Operators.Indirect;
+using LAX.Transmission.Json;
 using OpenAI.Chat;
 
 namespace LAX.Test
@@ -10,40 +11,39 @@ namespace LAX.Test
     public class Tests
     {
         private IAsyncCommunicator<ChatPrompt[]> Communicator { get; set; }
-        private IAsyncOperator<DistributeMessageModel?> Operator { get; set; }
+        private IExtensibleAsyncOperator<DistributeMessageModel?> Server { get; set; }
+        private Gpt35ClientOperator<DistributeMessageModel?> Client { get; set; }
+
         [SetUp]
         public void Setup()
         {
             Communicator = new Gpt35AsyncCommunicator()
             {
-               
+               Temperature = 0,
+               ModelName = ""
             };
-            Operator = new Gpt35DistributeAsyncOperator<DistributeMessageModel>(Communicator)
+            Server = new Gpt35DistributeAsyncOperator<DistributeMessageModel>(Communicator)
             {
-                Identifier = "这是中心服务器:[Server]",
-                Description = """
-                现在有 [comp1,comp2] 2台设备。在接下来的客户端发起的请求中，请仅使用JSON格式进行回复，比如：
-                { "device" :"comp1" , "reply":"mkdir d:" }，
-                请显式标注下文所指代的设备并填入到JSON的device中,接着将回复客户端的内容按照客户端的要求填入到reply中，
-                无论如何，请不要回复除了JSON文本以外的内容
-                """
+                Identifier = "You are center server :[Server]",
             };
+            Server.Add(Client = new Gpt35ClientOperator<DistributeMessageModel?>()
+            {
+                Identifier = "Client1",
+                Description = "This is my client"
+            });
+            Client.Proxy = Server;
+
+            string str = " ";
+            var bytes = " "u8.ToArray();
         }
 
         [Test]
         public async Task Test1()
         {
-            var groupContext = """
-                现在有 [comp1,comp2] 2台设备。在接下来的回复中，请仅使用JSON格式进行回复，比如 { "device" :"comp1" , "reply":"mkdir d:" }
-                请显式标注下文所指代的设备并填入到JSON的device中,接着将回复的字段按照要求填入到reply中，无论如何，请不要回复除了JSON文本以外的内容
-                """;
-            var groupMessage = "接下来这则消息来自客户端 comp1 ：\n";
-            var clientMessage = "针对这段要求的回复，请转换成简短的命令行：\"在另一台设备中的 d:MyDir 目录下创建一个名为Access的目录\" ";
+            var clientMessage = "针对这段要求的回复，请转换成简短的命令行 \"在另一台设备中的 d:MyDir 目录下创建一个名为Access的目录\" ";
             try
             {
-                var res = await Operator.SendAsync(
-                    groupMessage +
-                    clientMessage);
+                var res = await Client.SendAsync(clientMessage);
                 Assert.NotNull(res);
             }
             catch (Exception e)
