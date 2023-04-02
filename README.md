@@ -12,6 +12,7 @@
 ### Latest publish [Release beta v0.1.0](https://github.com/feast107/LAX/releases/tag/beta)
 
 + using `LAX.Server.SignalR` with Dependency injection
+
   ``` csharp
   IServiceCollection collection;
   collection.AddLAXSignalR(new Gpt35AsyncCommunicator()
@@ -27,6 +28,7 @@
   app.MapLAXHub("/pattern");
   ```
 + using `LAX.Client` of signalR client
+
   ``` csharp
   ILAXClient client = new LAXSignalRClient(url)
   {

@@ -34,6 +34,7 @@ public class LAXSignalRClient : ILAXClient
     {
         HubConnectionState.Connected => ILAXClient.ConnectionStatus.Connected,
         HubConnectionState.Connecting => ILAXClient.ConnectionStatus.Connecting,
+        HubConnectionState.Reconnecting => ILAXClient.ConnectionStatus.Connecting,
         HubConnectionState.Disconnected => ILAXClient.ConnectionStatus.Disconnected,
         _ => throw new NotSupportedException()
     };
