@@ -1,8 +1,7 @@
-﻿using System.Text.Json.Serialization;
-using LAX.Abstraction.Operation;
-using LAX.Transmission.Json;
+﻿using LAX.Abstraction.Operation;
 using LAX.Transmission.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
+using System.Text.Json.Serialization;
 
 namespace LAX.Client.SignalR;
 
@@ -21,13 +20,12 @@ public class SignalRClientOperator : IEventOperator<string>
         Hub.On<string>(nameof(InvokeMethod.Receive), s => { OnReceiveOperation?.Invoke(s); });
     }
 
-    public async Task StartAsync()
+    public async Task<bool> StartAsync()
     {
         await Hub.StartAsync();
-        if (Hub.State == HubConnectionState.Connected)
-        {
-            await Register();
-        }
+        if (Hub.State != HubConnectionState.Connected) return false;
+        await Register();
+        return true;
     }
 
     private async Task Register() => await Hub.InvokeAsync(nameof(InvokeMethod.Register), this);

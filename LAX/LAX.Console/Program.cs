@@ -24,9 +24,8 @@ public class Program
             Description = description
         };
         client.OnReceiveOperation += s => { System.Console.WriteLine($"\nServer: {s}"); };
-        var task = client.StartAsync();
-        await task;
-        System.Console.WriteLine(task.IsCompletedSuccessfully ? "Connect success" : "Connect failed");
+        var res = await client.StartAsync();
+        System.Console.WriteLine(res ? "Connect success" : "Connect failed");
         System.Console.Write("You:");
         var message = System.Console.ReadLine();
         while (message is not null or "q")

@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "AiController.Server": {
+    "LAX.Server": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

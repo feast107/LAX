@@ -27,8 +27,8 @@ namespace LAX.Server.SignalR.Services
                 if (task.Result?.ReplyMessages == null) return;
                 task.Result.ReplyMessages.ForEach(x =>
                 {
-                    if (x.Device == null) return;
-                    var pair = GetHubByIdentifier(x.Device.Trim());
+                    if (x.Client == null) return;
+                    var pair = GetHubByIdentifier(x.Client.Trim());
                     if(pair.HasValue)
                     {
                         hub.Clients
