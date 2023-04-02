@@ -3,7 +3,7 @@ using System.Text;
 
 namespace LAX.Transmission
 {
-    public static class ExampleHelper<T> where T : notnull
+    public static class ExampleHelper<T> 
     {
         public static string ForExample => cache ??= typeof(T).ForExample();
         // ReSharper disable once StaticMemberInGenericType

@@ -14,7 +14,7 @@ using OpenAI.Chat;
 
 namespace LAX.Operation.Operators.Direct
 {
-    public abstract class Gpt35DistributeBasedOperator :
+    public abstract class Gpt35DistributeBasedOperator<TMessage> :
         Gpt35BasedOperator,
         IExtensible
     {
@@ -25,14 +25,19 @@ namespace LAX.Operation.Operators.Direct
             get => Clients.Count == 0
                 ? string.Empty
                 : $"""
-            Now we have {Clients.Count} device/s named [{Clients.Aggregate(new StringBuilder(), (sb, c) => sb.Append(',' + c.Identifier)).ToString()[1..]}] 。
+            You are responsible for forwarding messages from multiple clients.
+            You must strictly adhere to the following points:
+                1.In any case,You are only allowed to reply in JSON format, it is forbidden to reply to content other than JSON format.
+                2.You are not allowed to interpret your statements and must give the result directly
+                3.At all times, you must ditch the superfluous expressions and start directly with JSON
+                4.If you have any uncertainties, you must also strictly use the JSON format to express them.
+                5.Your response format must strictly meet the following :{ExampleHelper<TMessage>.ForExample}
+                    Do not contain anything other than this format.
+            Now we have {Clients.Count} device{(Clients.Count > 1 ? 's' : "")} named [{Clients.Aggregate(new StringBuilder(), (sb, c) => sb.Append(',' + c.Identifier)).ToString()[1..]}] 。
             A self-description for each device follows：
             [{Clients.Aggregate(new StringBuilder(), (sb, c) => sb.AppendLine(
                 $"{{ name：{c.Identifier},\n description：{c.Description} }},\n"
             ))}]
-            Next, the client initiates the request，You must reply strictly in JSON format，for example：{ExampleHelper<DistributeMessageListModel>.ForExample}，
-            In any case, it is forbidden to reply to content other than JSON format,
-            If you have any uncertainties, you must also strictly use the JSON format to express them.
             """;
             set { }
         }
@@ -55,7 +60,7 @@ namespace LAX.Operation.Operators.Direct
 
 
     public class Gpt35DistributeAsyncOperator<TMessage> :
-        Gpt35DistributeBasedOperator,
+        Gpt35DistributeBasedOperator<TMessage>,
         IExtensibleAsyncOperator<TMessage?>
         where TMessage : IExceptional , new()
     {
@@ -83,7 +88,7 @@ namespace LAX.Operation.Operators.Direct
     }
 
     public class Gpt35DistributeEventOperator :
-        Gpt35DistributeBasedOperator,
+        Gpt35DistributeBasedOperator<DistributeMessageModel>,
         IEventOperator<DistributeMessageModel?>
     {
         public Gpt35DistributeEventOperator(IAsyncCommunicator<ChatPrompt[]> communicator) : base(communicator)
