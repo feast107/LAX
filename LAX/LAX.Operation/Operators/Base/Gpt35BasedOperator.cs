@@ -20,14 +20,11 @@ public abstract class Gpt35BasedOperator : IDescriptor
 
     protected virtual Task<string> SendAsyncInternal(string ask)
     {
-        var i = Identifier.ToChatPrompt(Role.system);
-        var d = Description.ToChatPrompt(Role.system);
-        var a = ask.ToChatPrompt();
         return Communicator.SendAsync(
             new [] {
-                i,
-                d,
-               a 
+                Identifier.ToChatPrompt(Role.system),
+                Description.ToChatPrompt(Role.system),
+                ask.ToChatPrompt()
             });
     }
 }

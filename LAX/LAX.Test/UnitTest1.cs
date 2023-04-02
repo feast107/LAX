@@ -20,7 +20,7 @@ namespace LAX.Test
             Communicator = new Gpt35AsyncCommunicator()
             {
                Temperature = 0,
-               ModelName = ""
+               ModelName = "gpt-3.5-turbo"
             };
             Server = new Gpt35DistributeAsyncOperator<DistributeMessageModel>(Communicator)
             {
@@ -32,9 +32,6 @@ namespace LAX.Test
                 Description = "This is my client"
             });
             Client.Proxy = Server;
-
-            string str = " ";
-            var bytes = " "u8.ToArray();
         }
 
         [Test]
