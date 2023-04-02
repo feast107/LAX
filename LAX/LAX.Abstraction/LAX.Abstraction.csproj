@@ -13,6 +13,7 @@
 		<FileVersion>0.1.0</FileVersion>
 		<Version>0.1.0</Version>
 		<Title>LAX.Abstraction</Title>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

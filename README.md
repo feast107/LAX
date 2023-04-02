@@ -8,11 +8,28 @@
 # Demo
 ![](./doc/Example.png)
 
-# Run
-+ Build and run [`LAX.Server`](./LAX/LAX.Server/)
+# Usage
+### Latest publish [Release beta v0.1.0](../releases/tag/beta)
 
-+ Build and run [`LAX.Console`](./LAX/LAX.Console/)
++ using `LAX.Server.SignalR` with Dependency injection
+  ``` csharp
+  IServiceCollection collection;
+  collection.AddLAXSignalR(new Gpt35AsyncCommunicator()
+  {
+      ApiKey = "your api key",
+      ModelName = "gpt-3.5-turbo",
+      Temperature = 0
+  });
 
+  ...
+  
+  WebApplication app;
+  app.MapLAXHub("/pattern");
+  ```
++ using `LAX.Client` of signalR client
+  ``` csharp
+  ILAXClient client = new LAXSignalRClient(url);
+  ```
 
 # Core
 Define a set of semantic-based wrappers and unpacks which allows client messages to pass through more AI layers unconsciously

@@ -2,6 +2,7 @@
 using HandyControl.Controls;
 using HandyControl.Data;
 using LAX.Abstraction.Operation;
+using LAX.Client;
 using LAX.Client.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 
@@ -13,7 +14,7 @@ namespace LAX.Desktop.Wpf
     public partial class ConfigWindow : System.Windows.Window
     {
         private bool connecting = false;
-        public delegate void ConnectHandler(IEventOperator<string> eventOperator);
+        public delegate void ConnectHandler(ILAXClient eventOperator);
         public ConnectHandler? OnConnected { get; set; }
         public ConfigWindow()
         {
@@ -25,10 +26,8 @@ namespace LAX.Desktop.Wpf
                 if (connecting) return;
                 connecting = true;
                 Connect.IsChecked = true;
-                var conn = new HubConnectionBuilder().WithUrl(Location.Text)
-                    .Build();
-                var op =
-                    new SignalRClientOperator(conn)
+                ILAXClient op =
+                    new LAXSignalRClient(Location.Text)
                     {
                         Identifier = Identifier.Text,
                         Description = Description.Text
@@ -36,7 +35,7 @@ namespace LAX.Desktop.Wpf
                 try
                 {
                     await op.StartAsync();
-                    if (conn.State != HubConnectionState.Connected) return;
+                    if (op.State != ILAXClient.ConnectionStatus.Connected) return;
                     OnConnected?.Invoke(op);
                 }
                 catch

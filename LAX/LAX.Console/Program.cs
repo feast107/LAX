@@ -1,4 +1,5 @@
-﻿using LAX.Client.SignalR;
+﻿using LAX.Client;
+using LAX.Client.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace LAX.Console;
@@ -18,19 +19,19 @@ public class Program
         System.Console.Write("Your Description :");
         var description = System.Console.ReadLine() ?? "This is Windows operating system Client";
 
-        var client = new SignalRClientOperator(connection)
+        ILAXClient ilaxClient = new LAXSignalRClient("http://localhost:5030/server")
         {
             Identifier = identifier,
             Description = description
         };
-        client.OnReceiveOperation += s => { System.Console.WriteLine($"\nServer: {s}"); };
-        var res = await client.StartAsync();
-        System.Console.WriteLine(res ? "Connect success" : "Connect failed");
+        ilaxClient.OnReceiveOperation += s => { System.Console.WriteLine($"\nServer: {s}"); };
+        var res = await ilaxClient.StartAsync();
+        System.Console.WriteLine(res);
         System.Console.Write("You:");
         var message = System.Console.ReadLine();
         while (message is not null or "q")
         {
-            client.Send(message);
+            ilaxClient.Send(message);
             System.Console.Write("You:");
             message = System.Console.ReadLine();
         }

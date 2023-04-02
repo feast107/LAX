@@ -3,13 +3,6 @@ using OpenAI.Chat;
 
 namespace LAX.Communication.GPT35
 {
-    public enum Role
-    {
-        system,
-        assistant,
-        user,
-    }
-
     public abstract class GptBaseCommunicator
     {
         public required string ModelName { get; init; }
@@ -22,10 +15,5 @@ namespace LAX.Communication.GPT35
         private OpenAIClient? client;
 
         public ChatRequest GetChatRequest(params ChatPrompt[] prompts) => new ChatRequest(prompts, ModelName, Temperature);
-    }
-
-    public static class ChatGptExtension 
-    {
-        public static ChatPrompt ToChatPrompt(this string message, Role role = Role.user) => new (role.ToString(), message);
     }
 }
