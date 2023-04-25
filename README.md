@@ -1,15 +1,16 @@
+<img align="left" src="./doc/LAX_round.png" width="150" height="150" style="float: left; margin: 0 10px 10px 0;">
+
 # :globe_with_meridians: LAX
 
-<div align="center">
-  <img src="./doc/LAX_round.png" width="200"/>
-  <h2>LAX (Language-based Ai Communication System)<h2>
-</div>
+LAX (Language-based Ai Communication System)
 
 # Demo
-![](./doc/Example.png)
+
+![Example](./doc/Example.png)
 
 # Usage
-### Latest publish [Release beta v0.1.0](https://github.com/feast107/LAX/releases/tag/beta)
+
+Latest publish [Release beta v0.1.0](https://github.com/feast107/LAX/releases/tag/beta)
 
 + using `LAX.Server.SignalR` with Dependency injection
 
@@ -27,6 +28,7 @@
   WebApplication app;
   app.MapLAXHub("/pattern");
   ```
+
 + using `LAX.Client` of signalR client
 
   ``` csharp
@@ -41,9 +43,11 @@
   ```
 
 # Core
+
 Define a set of semantic-based wrappers and unpacks which allows client messages to pass through more AI layers unconsciously
 
 They may contains
+
 + Risk control
 + Scheduling
 + Authentication
@@ -51,6 +55,7 @@ They may contains
 `Dynamic proxy` enable AI to intervene in every link.
 
 # Structure
+
 + [`Abstraction`](./LAX/LAX.Abstraction/) Interfaces that define how to communicate and transform messages.
 + `Operation`
   + [`Operation`](./LAX/LAX.Operation/) Implements of message transformations.
